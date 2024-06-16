@@ -21,3 +21,5 @@ python3 run.py
 ```
 
 ## Lisensi
+
+PyUnzip dilisensikan di bawah [Lisensi MIT](). 
