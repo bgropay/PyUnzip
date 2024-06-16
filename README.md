@@ -22,4 +22,4 @@ python3 run.py
 
 ## Lisensi
 
-PyUnzip dilisensikan di bawah [Lisensi MIT](). 
+PyUnzip dilisensikan di bawah [Lisensi MIT](https://github.com/bgropay/PyUnzip/blob/main/LICENSE). 
