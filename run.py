@@ -1,3 +1,17 @@
+#!/usr/bin/env python
+#
+# PyUnzip
+#
+# Program untuk meng-crack kata sandi file Zip
+#
+# Jenis Enkripsi yang didukung PyUnzip:
+# [+] ZipCrypto
+# [+] AES-128
+# [+] AES-192
+# [+] AES-256
+#
+# Dibuat oleh BgRopay
+
 import os
 import time
 import getpass
