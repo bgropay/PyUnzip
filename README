@@ -9,3 +9,7 @@ Instalasi
 $ git clone https://github.com/bgropay/PyUnzip/
 $ cd PyUnzip
 $ pip3 install -r requirements.txt
+
+Penggunaan
+----------
+python3 run.py
