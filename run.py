@@ -73,7 +73,6 @@ while True:
             print(f"{m}[-] {p}File Wordlist {input_wordlist} tidak ditemukan.{r}")
             continue
         print(f"{h}[+] {p}File Wordlist {input_wordlist} ditemukan.{r}")
-
         print(f"{b}[*] {p}Menghitung jumlah kata sandi yang terdapat dalam file Wordlist {input_wordlist}...{r}")
         time.sleep(3)
         with open(input_wordlist, "r", encoding="latin-1", errors="ignore") as list_kata_sandi:
