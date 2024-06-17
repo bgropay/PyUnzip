@@ -2,7 +2,8 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Diujicoba pada Kali Linux](https://img.shields.io/badge/Diujicoba%20pada-Kali%20Linux-blue.svg)
 ![Jumlah Fork](https://img.shields.io/github/forks/bgropay/PyUnzip.svg)
-# PyUnzip
+
+# PyUnzip :unlock:
 
 PyUnzip adalah program Python sederhana yang dirancang untuk meng-crack kata sandi file Zip. Program ini menggunakan teknik Dictionary Attack, yaitu teknik yang mencoba semua kemungkinan kata sandi yang terdapat dalam file Wordlist.
 
