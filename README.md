@@ -12,9 +12,9 @@ PyUnzip adalah program Python sederhana yang dirancang untuk meng-crack kata san
 ## Instalasi
 
 ```
-$ git clone https://github.com/bgropay/PyUnzip/
-$ cd PyUnzip
-$ pip3 install -r requirements.txt
+git clone https://github.com/bgropay/PyUnzip/
+cd PyUnzip
+pip3 install -r requirements.txt
 ```
 
 ## Penggunaan
