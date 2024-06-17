@@ -35,6 +35,11 @@ jika Anda mengalami masalah dengan PyUnzip atau memiliki saran perbaikan, kami m
 
 PyUnzip dilisensikan di bawah [Lisensi MIT](https://github.com/bgropay/PyUnzip/blob/main/LICENSE). 
 
+## Dukung Saya
+
+- [https://saweria.co/bgropay](https://saweria.co/bgropay)
+
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=bgropay/PyUnzip&type=Date)](https://star-history.com/#bgropay/PyUnzip&Date)
