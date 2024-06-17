@@ -24,6 +24,10 @@ $ pip3 install -r requirements.txt
 python3 run.py
 ```
 
+## Masalah dan Saran
+
+jika Anda mengalami masalah dengan PyUnzip atau memiliki saran perbaikan, kami mengundang Anda untuk melaporkannya di bagian [Issues](). Mohon berikan informasi sejelas mungkin tentang masalah atau saran Anda agar kami dapat segera menanganinya.
+
 ## Lisensi
 
 PyUnzip dilisensikan di bawah [Lisensi MIT](https://github.com/bgropay/PyUnzip/blob/main/LICENSE). 
