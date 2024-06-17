@@ -45,13 +45,10 @@
 # KELUAR DARI, ATAU SEHUBUNGAN DENGAN PERANGKAT LUNAK ATAU PENGGUNAAN ATAU URUSAN LAINNYA DALAM
 # PERANGKAT LUNAK.
 
-import json
 import os
 import time
-import getpass
 import colorama
 import pyzipper
-from datetime import datetime, timedelta
 
 # Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
@@ -122,10 +119,7 @@ while True:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
-# Variabel untuk pencatatan hasil cracking
 found_password = False
-mulai = datetime.now()
-jumlah_kata_sandi_dicoba = 0
 
 try:
     with pyzipper.AESZipFile(input_zip) as fz:
