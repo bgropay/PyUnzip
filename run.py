@@ -45,21 +45,15 @@
 # KELUAR DARI, ATAU SEHUBUNGAN DENGAN PERANGKAT LUNAK ATAU PENGGUNAAN ATAU URUSAN LAINNYA DALAM
 # PERANGKAT LUNAK.
 
+import json
 import os
 import time
 import getpass
-try:
-    import colorama
-except ImportError:
-    print("Terjadi kesalahan: Modul colorama belum terinstal. Instal dengan mengetikan perintah 'pip3 install colorama'.")
-    exit(1)
-try:
-    import pyzipper
-except ImportError:
-    print("Terjadi kesalahan: Modul pyzipper belum terinstal. Instal dengan mengetikan perintah 'pip3 install pyzipper'.")
-    exit(1)
+import colorama
+import pyzipper
+from datetime import datetime, timedelta
 
-# mengubah output warna teks
+# Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
 h = colorama.Fore.LIGHTGREEN_EX  # hijau
 b = colorama.Fore.LIGHTBLUE_EX   # biru
@@ -69,22 +63,19 @@ p = colorama.Fore.LIGHTWHITE_EX  # putih
 r = colorama.Style.RESET_ALL      # reset
 bm = colorama.Back.LIGHTRED_EX    # background merah
 
-# mengecek jenis sistem operasi
+# Mengecek jenis sistem operasi
 so = os.name
 
-# sistem operasi windows
+# Membersihkan layar terminal berdasarkan sistem operasi
 if so == "nt":
-    # membersihkan layar terminal windows
     os.system("cls")
-# sistem operasi linux
 elif so == "posix":
-    # membersihkan layar terminal linux
     os.system("clear")
 else:
     print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
     exit(1)
- 
-# ************** BANNER **************
+
+# Banner program
 print(f"""{p}******************************************************{r}
 {p}* {h}[+] {p}Program   : {k}PyUnzip                            {p}*{r}
 {p}* {h}[+] {p}Pembuat   : {k}BgRopay                            {p}*{r}
@@ -96,7 +87,7 @@ print(f"""{p}******************************************************{r}
 {bm}{p}:: Jangan gunakan program ini untuk tujuan ilegal.          ::{r}
 """)
 
-# ************** INPUT FILE ZIP **************
+# Input file Zip
 while True:
     try:
         input_zip = input(f"{c}[»] {p}Masukkan jalur ke file Zip: {c}")
@@ -112,7 +103,7 @@ while True:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
-# ************** INPUT FILE WORDLIST **************
+# Input file Wordlist
 while True:
     try:
         input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: {c}")
@@ -131,35 +122,87 @@ while True:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
-# ************** CRACK KATA SANDI FILE ZIP **************
+# Variabel untuk pencatatan hasil cracking
 found_password = False
+mulai = datetime.now()
+jumlah_kata_sandi_dicoba = 0
 
 try:
     with pyzipper.AESZipFile(input_zip) as fz:
         with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
             for baris_file in fw:
-                # kata sandi
                 kata_sandi = baris_file.strip()
+                jumlah_kata_sandi_dicoba += 1
+
                 try:
                     fz.pwd = kata_sandi.encode("latin-1")
-                     # kondisi kata sandi file zip ditemukan
                     if fz.testzip() is None:
                         print(f"{p}--------------------------------------------------{r}")
                         print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
                         print(f"{p}--------------------------------------------------{r}")
                         found_password = True
+
+                        # Menyimpan hasil dalam format JSON
+                        selesai = datetime.now()
+                        durasi_detik = (selesai - mulai).total_seconds()
+                        durasi_formatted = str(timedelta(seconds=durasi_detik))
+                        hasil_cracking = {
+                            "Waktu Mulai": mulai.strftime('%d-%m-%Y %H:%M:%S'),
+                            "Waktu Selesai": selesai.strftime('%d-%m-%Y %H:%M:%S'),
+                            "Durasi": durasi_formatted,
+                            "Nama File Zip": input_zip,
+                            "Nama File Wordlist": input_wordlist,
+                            "Jumlah Kata Sandi File Wordlist": jumlah_kata_sandi,
+                            "Kata Sandi": kata_sandi,
+                            "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
+                        }
+                        if os.path.exists("hasil_cracking.json"):
+                            with open("hasil_cracking.json", "r+") as file_json:
+                                data = json.load(file_json)
+                                data.append(hasil_cracking)
+                                file_json.seek(0)
+                                json.dump(data, file_json, indent=4)
+                        else:
+                            with open("hasil_cracking.json", "w") as file_json:
+                                json.dump([hasil_cracking], file_json, indent=4)
+
                         exit(0)
-                # pengecualian KeyboardInterrupt
                 except KeyboardInterrupt:
                     print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                     exit(1)
-                except Exception:  # pengecualian
+                except Exception:
                     print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                     continue
-    # kondisi kata sandi file zip tidak ditemukan
+
+    # Jika kata sandi tidak ditemukan
     if not found_password:
         print(f"{p}--------------------------------------------------{r}")
         print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam file wordlist {m}{input_wordlist}{r}")
         print(f"{p}--------------------------------------------------{r}")
+
+        # Menyimpan hasil dalam format JSON
+        selesai = datetime.now()
+        durasi_detik = (selesai - mulai).total_seconds()
+        durasi_formatted = str(timedelta(seconds=durasi_detik))
+        hasil_cracking = {
+            "Waktu Mulai": mulai.strftime('%d-%m-%Y %H:%M:%S'),
+            "Waktu Selesai": selesai.strftime('%d-%m-%Y %H:%M:%S'),
+            "Durasi": durasi_formatted,
+            "Nama File Zip": input_zip,
+            "Nama File Wordlist": input_wordlist,
+            "Jumlah Kata Sandi File Wordlist": jumlah_kata_sandi,
+            "Kata Sandi": False,  # Menandakan kata sandi tidak ditemukan
+            "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
+        }
+        if os.path.exists("hasil_cracking.json"):
+            with open("hasil_cracking.json", "r+") as file_json:
+                data = json.load(file_json)
+                data.append(hasil_cracking)
+                file_json.seek(0)
+                json.dump(data, file_json, indent=4)
+        else:
+            with open("hasil_cracking.json", "w") as file_json:
+                json.dump([hasil_cracking], file_json, indent=4)
+
 except Exception as e:
     print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
