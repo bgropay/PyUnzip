@@ -27,7 +27,7 @@ python3 run.py
 
 ![](https://github.com/bgropay/PyUnzip/blob/main/issues.gif)
 
-jika Anda mengalami masalah dengan PyUnzip atau memiliki saran perbaikan, kami mengundang Anda untuk melaporkannya di bagian [Issues](). Mohon berikan informasi sejelas mungkin tentang masalah atau saran Anda agar kami dapat segera menanganinya.
+jika Anda mengalami masalah dengan PyUnzip atau memiliki saran perbaikan, kami mengundang Anda untuk melaporkannya di bagian [Issues](https://github.com/bgropay/PyUnzip/issues). Mohon berikan informasi sejelas mungkin tentang masalah atau saran Anda agar kami dapat segera menanganinya.
 
 **Terima kasih atas kontribusi anda!**
 
