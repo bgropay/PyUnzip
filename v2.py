@@ -105,9 +105,9 @@ try:
                             "Durasi": durasi_formatted,
                             "Nama File Zip": input_zip,
                             "Nama File Wordlist": input_wordlist,
-                            "Jumlah kata sandi file Wordlist": jumlah_kata_sandi,
+                            "Jumlah Kata Sandi File Wordlist": jumlah_kata_sandi,
                             "Kata Sandi": kata_sandi,
-                            "Jumlah kata sandi yang dicoba": jumlah_kata_sandi_dicoba
+                            "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
                         }
                         if os.path.exists("hasil_cracking.json"):
                             with open("hasil_cracking.json", "r+") as file_json:
@@ -143,9 +143,9 @@ try:
             "Durasi": durasi_formatted,
             "Nama File Zip": input_zip,
             "Nama File Wordlist": input_wordlist,
-            "Jumlah kata sandi file Wordlist": jumlah_kata_sandi,
+            "Jumlah Kata Sandi File Wordlist": jumlah_kata_sandi,
             "Kata Sandi": False,  # Menandakan kata sandi tidak ditemukan
-            "Jumlah kata sandi yang dicoba": jumlah_kata_sandi_dicoba
+            "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
         }
         if os.path.exists("hasil_cracking.json"):
             with open("hasil_cracking.json", "r+") as file_json:
