@@ -141,31 +141,6 @@ try:
                         print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
                         print(f"{p}--------------------------------------------------{r}")
                         found_password = True
-
-                        # Menyimpan hasil dalam format JSON
-                        selesai = datetime.now()
-                        durasi_detik = (selesai - mulai).total_seconds()
-                        durasi_formatted = str(timedelta(seconds=durasi_detik))
-                        hasil_cracking = {
-                            "Waktu Mulai": mulai.strftime('%d-%m-%Y %H:%M:%S'),
-                            "Waktu Selesai": selesai.strftime('%d-%m-%Y %H:%M:%S'),
-                            "Durasi": durasi_formatted,
-                            "Nama File Zip": input_zip,
-                            "Nama File Wordlist": input_wordlist,
-                            "Jumlah Kata Sandi File Wordlist": jumlah_kata_sandi,
-                            "Kata Sandi": kata_sandi,
-                            "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
-                        }
-                        if os.path.exists("hasil_proses_cracking.json"):
-                            with open("hasil_cracking.json", "r+") as file_json:
-                                data = json.load(file_json)
-                                data.append(hasil_cracking)
-                                file_json.seek(0)
-                                json.dump(data, file_json, indent=4)
-                        else:
-                            with open("hasil_proses_cracking.json", "w") as file_json:
-                                json.dump([hasil_cracking], file_json, indent=4)
-
                         exit(0)
                 except KeyboardInterrupt:
                     print(f"\n{m}[-] {p}Keluar...{k}:({r}")
@@ -179,30 +154,5 @@ try:
         print(f"{p}--------------------------------------------------{r}")
         print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam file wordlist {m}{input_wordlist}{r}")
         print(f"{p}--------------------------------------------------{r}")
-
-        # Menyimpan hasil dalam format JSON
-        selesai = datetime.now()
-        durasi_detik = (selesai - mulai).total_seconds()
-        durasi_formatted = str(timedelta(seconds=durasi_detik))
-        hasil_cracking = {
-            "Waktu Mulai": mulai.strftime('%d-%m-%Y %H:%M:%S'),
-            "Waktu Selesai": selesai.strftime('%d-%m-%Y %H:%M:%S'),
-            "Durasi": durasi_formatted,
-            "Nama File Zip": input_zip,
-            "Nama File Wordlist": input_wordlist,
-            "Jumlah Kata Sandi File Wordlist": jumlah_kata_sandi,
-            "Kata Sandi": False,  # Menandakan kata sandi tidak ditemukan
-            "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
-        }
-        if os.path.exists("hasil_proses_cracking.json"):
-            with open("hasil_proses_cracking.json", "r+") as file_json:
-                data = json.load(file_json)
-                data.append(hasil_cracking)
-                file_json.seek(0)
-                json.dump(data, file_json, indent=4)
-        else:
-            with open("hasil_proses_cracking.json", "w") as file_json:
-                json.dump([hasil_cracking], file_json, indent=4)
-
 except Exception as e:
     print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
