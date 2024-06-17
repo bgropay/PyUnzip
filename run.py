@@ -195,7 +195,7 @@ try:
             "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
         }
         if os.path.exists("hasil_proses_cracking.json"):
-            with open("hasil_cracking.json", "r+") as file_json:
+            with open("hasil_proses_cracking.json", "r+") as file_json:
                 data = json.load(file_json)
                 data.append(hasil_cracking)
                 file_json.seek(0)
