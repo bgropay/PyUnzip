@@ -30,4 +30,4 @@ PyUnzip dilisensikan di bawah [Lisensi MIT](https://github.com/bgropay/PyUnzip/b
 
 ## Star History
 
-![](https://star-history.com/#bgropay/PyUnzip&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=bgropay/PyUnzip&type=Date)](https://star-history.com/#bgropay/PyUnzip&Date)
