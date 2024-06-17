@@ -156,14 +156,14 @@ try:
                             "Kata Sandi": kata_sandi,
                             "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
                         }
-                        if os.path.exists("hasil_cracking.json"):
+                        if os.path.exists("hasil_proses_cracking.json"):
                             with open("hasil_cracking.json", "r+") as file_json:
                                 data = json.load(file_json)
                                 data.append(hasil_cracking)
                                 file_json.seek(0)
                                 json.dump(data, file_json, indent=4)
                         else:
-                            with open("hasil_cracking.json", "w") as file_json:
+                            with open("hasil_proses_cracking.json", "w") as file_json:
                                 json.dump([hasil_cracking], file_json, indent=4)
 
                         exit(0)
@@ -194,14 +194,14 @@ try:
             "Kata Sandi": False,  # Menandakan kata sandi tidak ditemukan
             "Jumlah Kata Sandi Yang Dicoba": jumlah_kata_sandi_dicoba
         }
-        if os.path.exists("hasil_cracking.json"):
+        if os.path.exists("hasil_proses_cracking.json"):
             with open("hasil_cracking.json", "r+") as file_json:
                 data = json.load(file_json)
                 data.append(hasil_cracking)
                 file_json.seek(0)
                 json.dump(data, file_json, indent=4)
         else:
-            with open("hasil_cracking.json", "w") as file_json:
+            with open("hasil_proses_cracking.json", "w") as file_json:
                 json.dump([hasil_cracking], file_json, indent=4)
 
 except Exception as e:
