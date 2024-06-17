@@ -37,7 +37,8 @@ PyUnzip dilisensikan di bawah [Lisensi MIT](https://github.com/bgropay/PyUnzip/b
 
 ## Dukung Saya
 
-- [https://saweria.co/bgropay](https://saweria.co/bgropay)
+- [**Saweria**](https://saweria.co/bgropay)
+- [**SociaBuzz**](https://sociabuzz.com/bgropay)
 
 
 ## Star History
