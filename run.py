@@ -80,7 +80,7 @@ print(f"""{p}******************************************************{r}
 {p}* {h}[+] {p}Github    : {k}https://github.com/bgropay/pyunzip {p}*{r}
 {p}******************************************************{r}
 
-{bm}{p}:: Program ini hanya untuk tujuan edukasi dan Pembelajaran. ::{r}
+{bm}{p}:: Program ini hanya untuk tujuan Edukasi dan Pembelajaran. ::{r}
 {bm}{p}:: Jangan gunakan program ini untuk tujuan ilegal.          ::{r}
 """)
 
