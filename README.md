@@ -13,6 +13,8 @@ PyUnzip adalah program Python sederhana yang dirancang untuk meng-crack kata san
 
 ### Instalasi di Android (Termux)
 
+> Untuk menginstal PyUnzip di Android (Termux) ketikkan perintah berikut:
+
 ```
 pkg update
 pkg install python3
@@ -26,7 +28,7 @@ pip3 install -r requirements.txt
 
 ### Instalasi di Linux (Debian/Ubuntu)
 
-> Pastikan Anda sudah dalam mode super user (root) sebelum menginstal PyUnzip.
+> Pastikan Anda sudah dalam mode super user (root) sebelum menginstal PyUnzip. Jika sudah, ketikkan perintah berikut:
 
 ```
 apt-get update
