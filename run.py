@@ -126,8 +126,6 @@ try:
         with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
             for baris_file in fw:
                 kata_sandi = baris_file.strip()
-                jumlah_kata_sandi_dicoba += 1
-
                 try:
                     fz.pwd = kata_sandi.encode("latin-1")
                     if fz.testzip() is None:
@@ -142,7 +140,6 @@ try:
                 except Exception:
                     print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                     continue
-
     # Jika kata sandi tidak ditemukan
     if not found_password:
         print(f"{p}--------------------------------------------------{r}")
