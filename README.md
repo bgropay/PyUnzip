@@ -11,11 +11,40 @@ PyUnzip adalah program Python sederhana yang dirancang untuk meng-crack kata san
 
 ## Instalasi
 
+### Instalasi di Android (Termux)
+
 ```
+pkg update
+pkg install python3
+pkg install git
 git clone https://github.com/bgropay/PyUnzip/
 cd PyUnzip
+python3 -m venv modules
+source modules/bin/activate
 pip3 install -r requirements.txt
 ```
+
+### Instalasi di Linux (Debian/Ubuntu)
+
+> Pastikan Anda sudah dalam mode super user (root) sebelum menginstal PyUnzip.
+
+```
+apt-get update
+apt-get install python3
+apt-get install python3-pip
+apt-get install git
+git clone https://github.com/bgropay/PyUnzip/
+cd PyUnzip
+python3 -m venv modules
+source modules/bin/activate
+pip3 install -r requirements.txt
+```
+
+### Instalasi di Windows 
+
+> Untuk menginstal PyUnzip di Windows, pastikan Python3 sudah terinstal. Jika sudah, unduh Source Code berikut:
+
+[Source Code]()
 
 ## Penggunaan
 
