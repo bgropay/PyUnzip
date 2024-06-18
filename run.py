@@ -96,6 +96,7 @@ while True:
             continue
         print(f"{h}[+] {p}File Zip {input_zip} ditemukan.{r}")
         break
+    # Error handling KeyboardInterrupt
     except KeyboardInterrupt:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
@@ -115,11 +116,12 @@ while True:
         print(f"{h}[+] {p}Jumlah kata sandi yang terdapat dalam file {h}{input_wordlist} {p}sebanyak: {h}{jumlah_kata_sandi} {p}kata sandi.{r}\n")
         time.sleep(3)
         break
+    # Error handling KeyboardInterrupt
     except KeyboardInterrupt:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
-found_password = False
+kata_sandi_ditemukan = False
 
 try:
     with pyzipper.AESZipFile(input_zip) as fz:
@@ -132,8 +134,9 @@ try:
                         print(f"{p}--------------------------------------------------{r}")
                         print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
                         print(f"{p}--------------------------------------------------{r}")
-                        found_password = True
+                        kata_sandi_ditemukan = True
                         exit(0)
+                # Error handling KeyboardInterrupt
                 except KeyboardInterrupt:
                     print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                     exit(1)
@@ -141,7 +144,7 @@ try:
                     print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                     continue
     # Jika kata sandi tidak ditemukan
-    if not found_password:
+    if not kata_sandi_ditemukan:
         print(f"{p}--------------------------------------------------{r}")
         print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam file wordlist {m}{input_wordlist}{r}")
         print(f"{p}--------------------------------------------------{r}")
