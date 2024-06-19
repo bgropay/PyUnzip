@@ -5,9 +5,7 @@
 # PyUnzip adalah program Python sederhana 
 # yang dirancang untuk meng-crack kata sandi
 # file Zip. Program ini menggunakan teknik
-# Dictionary Attack, yaitu teknik yang mencoba
-# semua kemungkinan kata sandi yang terdapat
-# dalam file Wordlist.
+# Dictionary Attack dan Brute Force Attack.
 #
 #
 # Jenis Enkripsi yang didukung PyUnzip
@@ -47,6 +45,8 @@
 
 import os
 import time
+import itertools
+import string
 import colorama
 import pyzipper
 
@@ -57,8 +57,8 @@ b = colorama.Fore.LIGHTBLUE_EX   # biru
 k = colorama.Fore.LIGHTYELLOW_EX # kuning
 c = colorama.Fore.LIGHTCYAN_EX   # cyan
 p = colorama.Fore.LIGHTWHITE_EX  # putih
-r = colorama.Style.RESET_ALL      # reset
-bm = colorama.Back.LIGHTRED_EX    # background merah
+r = colorama.Style.RESET_ALL     # reset
+bm = colorama.Back.LIGHTRED_EX   # background merah
 
 # Mengecek jenis sistem operasi
 so = os.name
@@ -101,52 +101,143 @@ while True:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
-# Input file Wordlist
+# Memilih metode serangan
 while True:
     try:
-        input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: {c}")
-        if not os.path.isfile(input_wordlist):
-            print(f"{m}[-] {p}File Wordlist {input_wordlist} tidak ditemukan.{r}")
+        metode_serangan = input(f"{c}[»] {p}Pilih metode serangan (1: Dictionary Attack, 2: Brute Force Attack): {c}")
+        if metode_serangan not in ["1", "2"]:
+            print(f"{m}[-] {p}Pilihan tidak valid.{r}")
             continue
-        print(f"{h}[+] {p}File Wordlist {input_wordlist} ditemukan.{r}")
-        print(f"{b}[*] {p}Menghitung jumlah kata sandi yang terdapat dalam file Wordlist {b}{input_wordlist}{p}...{r}")
-        time.sleep(3)
-        with open(input_wordlist, "r", encoding="latin-1", errors="ignore") as list_kata_sandi:
-            jumlah_kata_sandi = sum(1 for baris in list_kata_sandi)
-        print(f"{h}[+] {p}Jumlah kata sandi yang terdapat dalam file {h}{input_wordlist} {p}sebanyak: {h}{jumlah_kata_sandi} {p}kata sandi.{r}\n")
-        time.sleep(3)
         break
-    # Error handling KeyboardInterrupt
     except KeyboardInterrupt:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
 kata_sandi_ditemukan = False
 
-try:
-    with pyzipper.AESZipFile(input_zip) as fz:
-        with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
-            for baris_file in fw:
-                kata_sandi = baris_file.strip()
-                try:
-                    fz.pwd = kata_sandi.encode("latin-1")
-                    if fz.testzip() is None:
-                        print(f"{p}--------------------------------------------------{r}")
-                        print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
-                        print(f"{p}--------------------------------------------------{r}")
-                        kata_sandi_ditemukan = True
-                        exit(0)
-                # Error handling KeyboardInterrupt
-                except KeyboardInterrupt:
-                    print(f"\n{m}[-] {p}Keluar...{k}:({r}")
-                    exit(1)
-                except Exception:
-                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
-                    continue
-    # Jika kata sandi tidak ditemukan
-    if not kata_sandi_ditemukan:
-        print(f"{p}--------------------------------------------------{r}")
-        print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam file wordlist {m}{input_wordlist}{r}")
-        print(f"{p}--------------------------------------------------{r}")
-except Exception as e:
-    print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
+if metode_serangan == "1":
+    # Input file Wordlist
+    while True:
+        try:
+            input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: {c}")
+            if not os.path.isfile(input_wordlist):
+                print(f"{m}[-] {p}File Wordlist {input_wordlist} tidak ditemukan.{r}")
+                continue
+            print(f"{h}[+] {p}File Wordlist {input_wordlist} ditemukan.{r}")
+            print(f"{b}[*] {p}Menghitung jumlah kata sandi yang terdapat dalam file Wordlist {b}{input_wordlist}{p}...{r}")
+            time.sleep(3)
+            with open(input_wordlist, "r", encoding="latin-1", errors="ignore") as list_kata_sandi:
+                jumlah_kata_sandi = sum(1 for baris in list_kata_sandi)
+            print(f"{h}[+] {p}Jumlah kata sandi yang terdapat dalam file {h}{input_wordlist} {p}sebanyak: {h}{jumlah_kata_sandi} {p}kata sandi.{r}\n")
+            time.sleep(3)
+            break
+        # Error handling KeyboardInterrupt
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
+
+    try:
+        with pyzipper.AESZipFile(input_zip) as fz:
+            with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
+                for baris_file in fw:
+                    kata_sandi = baris_file.strip()
+                    try:
+                        fz.pwd = kata_sandi.encode("latin-1")
+                        if fz.testzip() is None:
+                            print(f"{p}--------------------------------------------------{r}")
+                            print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                            print(f"{p}--------------------------------------------------{r}")
+                            kata_sandi_ditemukan = True
+                            exit(0)
+                    # Error handling KeyboardInterrupt
+                    except KeyboardInterrupt:
+                        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                        exit(1)
+                    except Exception:
+                        print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                        continue
+        # Jika kata sandi tidak ditemukan
+        if not kata_sandi_ditemukan:
+            print(f"{p}--------------------------------------------------{r}")
+            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam file wordlist {m}{input_wordlist}{r}")
+            print(f"{p}--------------------------------------------------{r}")
+    except Exception as e:
+        print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
+
+elif metode_serangan == "2":
+    # Input panjang minimal kata sandi
+    while True:
+        try:
+            min_length = int(input(f"{c}[»] {p}Masukkan panjang minimal kata sandi: {c}"))
+            if min_length <= 0:
+                print(f"{m}[-] {p}Panjang minimal kata sandi harus lebih dari 0.{r}")
+                continue
+            break
+        except ValueError:
+            print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
+
+    # Input panjang maksimal kata sandi
+    while True:
+        try:
+            max_length = int(input(f"{c}[»] {p}Masukkan panjang maksimal kata sandi: {c}"))
+            if max_length < min_length:
+                print(f"{m}[-] {p}Panjang maksimal kata sandi harus lebih dari atau sama dengan panjang minimal kata sandi.{r}")
+                continue
+            break
+        except ValueError:
+            print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
+            
+    # Memilih jenis karakter
+    characters = ""
+    while True:
+        try:
+            if input(f"{c}[»] {p}Gunakan huruf kecil? (y/n): {c}").lower() == "y":
+                characters += string.ascii_lowercase
+            if input(f"{c}[»] {p}Gunakan huruf besar? (y/n): {c}").lower() == "y":
+                characters += string.ascii_uppercase
+            if input(f"{c}[»] {p}Gunakan angka? (y/n): {c}").lower() == "y":
+                characters += string.digits
+            if input(f"{c}[»] {p}Gunakan simbol? (y/n): {c}").lower() == "y":
+                characters += string.punctuation
+            
+            if not characters:
+                print(f"{m}[-] {p}Anda harus memilih setidaknya satu jenis karakter.{r}")
+                continue
+            break
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
+
+    try:
+        with pyzipper.AESZipFile(input_zip) as fz:
+            for length in range(min_length, max_length + 1):
+                for attempt in itertools.product(characters, repeat=length):
+                    kata_sandi = ''.join(attempt)
+                    try:
+                        fz.pwd = kata_sandi.encode("latin-1")
+                        if fz.testzip() is None:
+                            print(f"{p}--------------------------------------------------{r}")
+                            print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                            print(f"{p}--------------------------------------------------{r}")
+                            kata_sandi_ditemukan = True
+                            exit(0)
+                    # Error handling KeyboardInterrupt
+                    except KeyboardInterrupt:
+                        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                        exit(1)
+                    except Exception:
+                        print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                        continue
+        # Jika kata sandi tidak ditemukan
+        if not kata_sandi_ditemukan:
+            print(f"{p}--------------------------------------------------{r}")
+            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam rentang panjang dan karakter yang diberikan.{r}")
+            print(f"{p}--------------------------------------------------{r}")
+    except Exception as e:
+        print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
