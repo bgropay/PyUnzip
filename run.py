@@ -102,7 +102,7 @@ while True:
         exit(1)
 
 # Memilih metode serangan
-x = 0
+x = 1
 list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
 print("\nMetode serangan yang tersedia:\n")
 for metode in list_metode_serangan:
