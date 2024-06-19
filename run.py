@@ -102,12 +102,12 @@ while True:
         exit(1)
 
 # Memilih metode serangan
-c = 0
+x = 0
 list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
-print("Metode serangan yang tersedia:\n")
+print("\nMetode serangan yang tersedia:\n")
 for metode in list_metode_serangan:
-    print(f"{c}. {metode}")
-    c += 1
+    print(f"{x}. {metode}")
+    x += 1
 print("")
 while True:
     try:
