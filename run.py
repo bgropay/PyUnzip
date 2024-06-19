@@ -104,8 +104,7 @@ while True:
 # Memilih metode serangan
 c = 0
 list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
-print("Metode serangan yang tersedia:
-")
+print("Metode serangan yang tersedia:\n")
 for metode in list_metode_serangan:
     print(f"{c}. {metode}")
     c += 1
