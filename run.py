@@ -102,6 +102,14 @@ while True:
         exit(1)
 
 # Memilih metode serangan
+c = 0
+list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
+print("Metode serangan yang tersedia:
+")
+for metode in list_metode_serangan:
+    print(f"{c}. {metode}")
+    c += 1
+print("")
 while True:
     try:
         metode_serangan = input(f"{c}[»] {p}Pilih metode serangan (1: Dictionary Attack, 2: Brute Force Attack): {c}")
