@@ -153,19 +153,19 @@ if metode_serangan == "1":
             exit(1)
             
     # *************** MEMILIH JENIS KOMBINASI KARAKTER ***************
-    characters = ""
+    kombinasi_karakter = ""
     while True:
         try:
-            if input(f"{c}[»] {p}Gunakan huruf kecil? [y/n]: {c}").lower() == "y":
-                characters += string.ascii_lowercase
-            if input(f"{c}[»] {p}Gunakan huruf besar? [y/n]: {c}").lower() == "y":
-                characters += string.ascii_uppercase
-            if input(f"{c}[»] {p}Gunakan angka? [y/n]: {c}").lower() == "y":
-                characters += string.digits
-            if input(f"{c}[»] {p}Gunakan simbol? [y/n]: {c}").lower() == "y":
-                characters += string.punctuation
+            if input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: {c}").lower() == "y":
+                kombinasi_karakter += string.ascii_lowercase
+            if input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower() == "y":
+                kombinasi_karakter += string.ascii_uppercase
+            if input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: {c}").lower() == "y":
+                kombinasi_karakter += string.digits
+            if input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: {c}").lower() == "y":
+                kombinasi_karakter += string.punctuation
             
-            if not characters:
+            if not kombinasi_karakter:
                 print(f"{m}[-] {p}Anda harus memilih setidaknya satu jenis karakter.{r}")
                 continue
             break
@@ -177,7 +177,7 @@ if metode_serangan == "1":
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
             for length in range(min_length, max_length + 1):
-                for attempt in itertools.product(characters, repeat=length):
+                for attempt in itertools.product(kombinasi_karakter, repeat=length):
                     kata_sandi = ''.join(attempt)
                     try:
                         fz.pwd = kata_sandi.encode("latin-1")
