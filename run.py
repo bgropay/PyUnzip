@@ -72,7 +72,7 @@ else:
     print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
     exit(1)
 
-# Banner program
+# *************** BANNER ***************
 print(f"""{p}******************************************************{r}
 {p}* {h}[+] {p}Program   : {k}PyUnzip                            {p}*{r}
 {p}* {h}[+] {p}Pembuat   : {k}BgRopay                            {p}*{r}
@@ -84,7 +84,7 @@ print(f"""{p}******************************************************{r}
 {bm}{p}:: Jangan gunakan program ini untuk tujuan ilegal.          ::{r}
 """)
 
-# Input file Zip
+# *************** INPUT FILE ZIP ***************
 while True:
     try:
         input_zip = input(f"{c}[»] {p}Masukkan jalur ke file Zip: {c}")
@@ -101,7 +101,7 @@ while True:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
         exit(1)
 
-# Memilih metode serangan
+# *************** MEMILIH METODE SERANGAN ***************
 x = 1
 print("\nMetode serangan yang tersedia:\n")
 list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
@@ -122,8 +122,9 @@ while True:
 
 kata_sandi_ditemukan = False
 
+# *************** BRUTE FORCE ATTACK ***************
 if metode_serangan == "1":
-    # Input panjang minimal kata sandi
+    # input panjang minimal kata sandi 
     while True:
         try:
             min_length = int(input(f"{c}[»] {p}Masukkan panjang minimal kata sandi: {c}"))
@@ -137,7 +138,7 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
-    # Input panjang maksimal kata sandi
+    # input panjang maksimal kata sandi
     while True:
         try:
             max_length = int(input(f"{c}[»] {p}Masukkan panjang maksimal kata sandi: {c}"))
@@ -151,17 +152,17 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
             
-    # Memilih jenis karakter
+    # *************** MEMILIH JENIS KOMBINASI KARAKTER ***************
     characters = ""
     while True:
         try:
-            if input(f"{c}[»] {p}Gunakan huruf kecil? (y/n): {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan huruf kecil? [y/n]: {c}").lower() == "y":
                 characters += string.ascii_lowercase
-            if input(f"{c}[»] {p}Gunakan huruf besar? (y/n): {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan huruf besar? [y/n]: {c}").lower() == "y":
                 characters += string.ascii_uppercase
-            if input(f"{c}[»] {p}Gunakan angka? (y/n): {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan angka? [y/n]: {c}").lower() == "y":
                 characters += string.digits
-            if input(f"{c}[»] {p}Gunakan simbol? (y/n): {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan simbol? [y/n]: {c}").lower() == "y":
                 characters += string.punctuation
             
             if not characters:
@@ -172,6 +173,7 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN BRUTE FORCE ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
             for length in range(min_length, max_length + 1):
@@ -200,8 +202,9 @@ if metode_serangan == "1":
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
 
+# *************** DICTIONARY ATTACK ***************
 if metode_serangan == "2":
-    # Input file Wordlist
+    # input file Wordlist
     while True:
         try:
             input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: {c}")
@@ -221,6 +224,7 @@ if metode_serangan == "2":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN DICTIONARY ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
             with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
