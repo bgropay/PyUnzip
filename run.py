@@ -112,7 +112,7 @@ print("")
 while True:
     try:
         metode_serangan = input(f"{c}[»] {p}Pilih metode serangan: {c}")
-        if metode_serangan not in ["1", "2"] or metode_serangan not in list_metode_serangan:
+        if metode_serangan not in ["1", "2"]:
             print(f"{m}[-] {p} Metode serangan {m}{metode_serangan} {p}tidak tersedia.{r}")
             continue
         break
