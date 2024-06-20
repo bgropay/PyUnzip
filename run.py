@@ -103,17 +103,17 @@ while True:
 
 # Memilih metode serangan
 x = 1
-list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
 print("\nMetode serangan yang tersedia:\n")
+list_metode_serangan = ["Brute Force Attack", "Dictionary Attack"]
 for metode in list_metode_serangan:
     print(f"{x}. {metode}")
     x += 1
 print("")
 while True:
     try:
-        metode_serangan = input(f"{c}[»] {p}Pilih metode serangan (1: Dictionary Attack, 2: Brute Force Attack): {c}")
-        if metode_serangan not in ["1", "2"]:
-            print(f"{m}[-] {p}Pilihan tidak valid.{r}")
+        metode_serangan = input(f"{c}[»] {p}Pilih metode serangan: {c}")
+        if metode_serangan not in ["1", "2"] or metode_serangan not in list_metode_serangan:
+            print(f"{m}[-] {p} Metode serangan {m}{metode_serangan} {p}tidak tersedia.{r}")
             continue
         break
     except KeyboardInterrupt:
