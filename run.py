@@ -156,13 +156,13 @@ if metode_serangan == "1":
     kombinasi_karakter = ""
     while True:
         try:
-            if input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: {c}").lower() == "iya":
                 kombinasi_karakter += string.ascii_lowercase
-            if input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower() == "iya":
                 kombinasi_karakter += string.ascii_uppercase
-            if input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: {c}").lower() == "iya":
                 kombinasi_karakter += string.digits
-            if input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: {c}").lower() == "y":
+            if input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: {c}").lower() == "iya":
                 kombinasi_karakter += string.punctuation
             
             if not kombinasi_karakter:
