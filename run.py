@@ -94,6 +94,7 @@ while True:
         if not input_zip.endswith(".zip"):
             print(f"{m}[-] {p}File {input_zip} bukan file Zip.{r}")
             continue
+        break
     # Error handling KeyboardInterrupt
     except KeyboardInterrupt:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
