@@ -168,7 +168,7 @@ if metode_serangan == "1":
             while True:
                 pilih_huruf_besar = input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower()
                 if pilih_huruf_besar in ["iya", "tidak"]:
-                    jika pilih_huruf_besar == "iya":
+                    if pilih_huruf_besar == "iya":
                         kombinasi_karakter += string.ascii_uppercase
                     break
                 else:
