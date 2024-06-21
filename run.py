@@ -87,7 +87,7 @@ print(f"""{p}******************************************************{r}
 # *************** INPUT FILE ZIP ***************
 while True:
     try:
-        input_zip = input(f"{c}[»] {p}Masukkan jalur ke file Zip: {c}")
+        input_zip = input(f"{c}[»] {p}Masukkan jalur ke file Zip: ")
         if not os.path.isfile(input_zip):
             print(f"{m}[-] {p}File Zip {input_zip} tidak ditemukan.{r}")
             continue
@@ -110,7 +110,7 @@ for metode in list_metode_serangan:
 print("")
 while True:
     try:
-        metode_serangan = input(f"{c}[»] {p}Pilih metode serangan: {c}")
+        metode_serangan = input(f"{c}[»] {p}Pilih metode serangan: ")
         if metode_serangan not in ["1", "2"]:
             print(f"{m}[-] {p} Metode serangan '{metode_serangan}' tidak tersedia.{r}")
             continue
@@ -126,7 +126,7 @@ if metode_serangan == "1":
     # input panjang minimal kata sandi 
     while True:
         try:
-            min_length = int(input(f"{c}[»] {p}Masukkan panjang minimal kata sandi: {c}"))
+            min_length = int(input(f"{c}[»] {p}Masukkan panjang minimal kata sandi: "))
             if min_length <= 0:
                 print(f"{m}[-] {p}Panjang minimal kata sandi harus lebih dari 0.{r}")
                 continue
@@ -140,7 +140,7 @@ if metode_serangan == "1":
     # input panjang maksimal kata sandi
     while True:
         try:
-            max_length = int(input(f"{c}[»] {p}Masukkan panjang maksimal kata sandi: {c}"))
+            max_length = int(input(f"{c}[»] {p}Masukkan panjang maksimal kata sandi: "))
             if max_length < min_length:
                 print(f"{m}[-] {p}Panjang maksimal kata sandi harus lebih dari atau sama dengan panjang minimal kata sandi.{r}")
                 continue
@@ -156,7 +156,7 @@ if metode_serangan == "1":
     while True:
         try:
             while True:
-                pilih_huruf_kecil = input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: {c}").lower()
+                pilih_huruf_kecil = input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: ").lower()
                 if pilih_huruf_kecil in ["iya", "tidak"]:
                     if pilih_huruf_kecil == "iya":
                         kombinasi_karakter += string.ascii_lowercase
@@ -165,7 +165,7 @@ if metode_serangan == "1":
                     print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
 
             while True:
-                pilih_huruf_besar = input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower()
+                pilih_huruf_besar = input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: ").lower()
                 if pilih_huruf_besar in ["iya", "tidak"]:
                     if pilih_huruf_besar == "iya":
                         kombinasi_karakter += string.ascii_uppercase
@@ -174,7 +174,7 @@ if metode_serangan == "1":
                     print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
 
             while True:
-                pilih_angka = input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: {c}").lower()
+                pilih_angka = input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: ").lower()
                 if pilih_angka in ["iya", "tidak"]:
                     if pilih_angka == "iya":
                         kombinasi_karakter += string.digits
@@ -183,7 +183,7 @@ if metode_serangan == "1":
                     print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
 
             while True:
-                pilih_simbol = input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: {c}").lower()
+                pilih_simbol = input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: ").lower()
                 if pilih_simbol in ["iya", "tidak"]:
                     if pilih_simbol == "iya":
                         kombinasi_karakter += string.punctuation
@@ -233,7 +233,7 @@ if metode_serangan == "2":
     # input file Wordlist
     while True:
         try:
-            input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: {c}")
+            input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: ")
             if not os.path.isfile(input_wordlist):
                 print(f"{m}[-] {p}File Wordlist {input_wordlist} tidak ditemukan.{r}")
                 continue
@@ -271,5 +271,3 @@ if metode_serangan == "2":
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
-
-                
