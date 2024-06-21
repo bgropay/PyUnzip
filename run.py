@@ -156,15 +156,42 @@ if metode_serangan == "1":
     kombinasi_karakter = ""
     while True:
         try:
-            if input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: {c}").lower() == "iya":
-                kombinasi_karakter += string.ascii_lowercase
-            if input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower() == "iya":
-                kombinasi_karakter += string.ascii_uppercase
-            if input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: {c}").lower() == "iya":
-                kombinasi_karakter += string.digits
-            if input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: {c}").lower() == "iya":
-                kombinasi_karakter += string.punctuation
-            
+            while True:
+                pilih_huruf_kecil = input(f"{c}[»] {p}Gunakan huruf kecil? [iya/tidak]: {c}").lower()
+                if pilih_huruf_kecil in ["iya", "tidak"]:
+                    if pilih_huruf_kecil == "iya":
+                        kombinasi_karakter += string.ascii_lowercase
+                    break
+                else:
+                    print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+
+            while True:
+                pilih_huruf_besar = input(f"{c}[»] {p}Gunakan huruf besar? [iya/tidak]: {c}").lower()
+                if pilih_huruf_besar in ["iya", "tidak"]:
+                    jika pilih_huruf_besar == "iya":
+                        kombinasi_karakter += string.ascii_uppercase
+                    break
+                else:
+                    print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+
+            while True:
+                pilih_angka = input(f"{c}[»] {p}Gunakan angka? [iya/tidak]: {c}").lower()
+                if pilih_angka in ["iya", "tidak"]:
+                    if pilih_angka == "iya":
+                        kombinasi_karakter += string.digits
+                    break
+                else:
+                    print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+
+            while True:
+                pilih_simbol = input(f"{c}[»] {p}Gunakan simbol? [iya/tidak]: {c}").lower()
+                if pilih_simbol in ["iya", "tidak"]:
+                    if pilih_simbol == "iya":
+                        kombinasi_karakter += string.punctuation
+                    break
+                else:
+                    print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+
             if not kombinasi_karakter:
                 print(f"{m}[-] {p}Anda harus memilih setidaknya satu jenis karakter.{r}")
                 continue
@@ -252,3 +279,5 @@ if metode_serangan == "2":
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
+
+                
