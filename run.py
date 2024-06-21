@@ -199,7 +199,16 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
-    print(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+    input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+  
+    # Membersihkan layar terminal berdasarkan sistem operasi
+    if so == "nt":
+        os.system("cls")
+    elif so == "posix":
+        os.system("clear")
+    else:
+        print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
+        exit(1)
     
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN BRUTE FORCE ATTACK ***************
     try:
@@ -245,8 +254,17 @@ if metode_serangan == "2":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
-    print(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
-    
+    input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+  
+    # Membersihkan layar terminal berdasarkan sistem operasi
+    if so == "nt":
+        os.system("cls")
+    elif so == "posix":
+        os.system("clear")
+    else:
+        print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
+        exit(1)
+
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN DICTIONARY ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
