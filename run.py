@@ -199,6 +199,8 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    print(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+    
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN BRUTE FORCE ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
@@ -243,6 +245,8 @@ if metode_serangan == "2":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    print(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+    
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN DICTIONARY ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
