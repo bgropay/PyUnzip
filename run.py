@@ -94,8 +94,6 @@ while True:
         if not input_zip.endswith(".zip"):
             print(f"{m}[-] {p}File {input_zip} bukan file Zip.{r}")
             continue
-        print(f"{h}[+] {p}File Zip {input_zip} ditemukan.{r}")
-        break
     # Error handling KeyboardInterrupt
     except KeyboardInterrupt:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
@@ -113,7 +111,7 @@ while True:
     try:
         metode_serangan = input(f"{c}[»] {p}Pilih metode serangan: {c}")
         if metode_serangan not in ["1", "2"]:
-            print(f"{m}[-] {p} Metode serangan {m}{metode_serangan} {p}tidak tersedia.{r}")
+            print(f"{m}[-] {p} Metode serangan '{metode_serangan}' tidak tersedia.{r}")
             continue
         break
     except KeyboardInterrupt:
@@ -238,13 +236,6 @@ if metode_serangan == "2":
             if not os.path.isfile(input_wordlist):
                 print(f"{m}[-] {p}File Wordlist {input_wordlist} tidak ditemukan.{r}")
                 continue
-            print(f"{h}[+] {p}File Wordlist {input_wordlist} ditemukan.{r}")
-            print(f"{b}[*] {p}Menghitung jumlah kata sandi yang terdapat dalam file Wordlist {b}{input_wordlist}{p}...{r}")
-            time.sleep(3)
-            with open(input_wordlist, "r", encoding="latin-1", errors="ignore") as list_kata_sandi:
-                jumlah_kata_sandi = sum(1 for baris in list_kata_sandi)
-            print(f"{h}[+] {p}Jumlah kata sandi yang terdapat dalam file {h}{input_wordlist} {p}sebanyak: {h}{jumlah_kata_sandi} {p}kata sandi.{r}\n")
-            time.sleep(3)
             break
         # Error handling KeyboardInterrupt
         except KeyboardInterrupt:
