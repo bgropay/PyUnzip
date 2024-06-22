@@ -81,8 +81,10 @@ class PyUnzip:
 
     def get_attack_method(self):
         methods = ["Brute Force Attack", "Dictionary Attack"]
+        print()
         for i, method in enumerate(methods, 1):
             print(f"{i}. {method}")
+        print()
         while True:
             try:
                 choice = input(f"{self.c}[»] {self.p}Pilih metode serangan: ")
