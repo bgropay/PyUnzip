@@ -64,7 +64,7 @@ r = colorama.Style.RESET_ALL     # reset
 bm = colorama.Back.LIGHTRED_EX   # background merah
 
 # Token yang benar
-correct_token = 'bgropay123'
+token_benar = "kunyuk is here"
 
 # Mengatur mode terminal untuk menyembunyikan input
 fd = sys.stdin.fileno()
@@ -109,14 +109,13 @@ while True:
     print()  # Move to the next line
 
     # Memeriksa apakah token yang dimasukkan benar
-    if input_token == correct_token:
+    if input_token == token_benar:
         print('[+] Token benar.')
         time.sleep(3)
         break  # Keluar dari loop jika login berhasil
     else:
         print('[-] Token salah. Silahkan coba lagi.')
         time.sleep(3)
-
 
 # Mengecek jenis sistem operasi
 so = os.name
