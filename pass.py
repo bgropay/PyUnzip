@@ -6,5 +6,7 @@ while True:
              pass  # Program utama berjalan di sini
     except KeyboardInterrupt:
         print("Mengabaikan Ctrl+C!")
-    except SystemExit:
+        continue
+    except Exception:
         print("Mengabaikan Ctrl+Z!")
+        continue
