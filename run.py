@@ -18,9 +18,8 @@ p = colorama.Fore.LIGHTWHITE_EX  # putih
 r = colorama.Style.RESET_ALL     # reset
 bm = colorama.Back.LIGHTRED_EX   # background merah
 
-so = os.system()
+so = os.name
 
-# Membersihkan layar terminal berdasarkan sistem operasi
 if so == "nt":
     os.system("cls")
 elif so == "posix":
