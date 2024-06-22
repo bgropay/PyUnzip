@@ -76,8 +76,8 @@ while True:
     
     try:
         tty.setraw(fd)
-        print(f"{c}[»] {p}Masukkan Token: ", end="", flush=True)
-        input_token = ""
+        input_token = input(f"{c}[»] {p}Masukkan Token: ", end="", flush=True)
+        # input_token = ""
         while True:
             char = sys.stdin.read(1)
             if char == "\n" or char == "\r":
