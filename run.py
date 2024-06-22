@@ -3,8 +3,6 @@
 import os
 import time
 import sys
-import termios
-import tty
 import itertools
 import string
 import colorama
@@ -38,6 +36,8 @@ while True:
         exit(1)
     
     if so == "posix":
+        import termios
+        import tty
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
