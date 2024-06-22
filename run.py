@@ -45,6 +45,9 @@
 
 import os
 import time
+import sys
+import termios
+import tty
 import itertools
 import string
 import colorama
@@ -59,6 +62,61 @@ c = colorama.Fore.LIGHTCYAN_EX   # cyan
 p = colorama.Fore.LIGHTWHITE_EX  # putih
 r = colorama.Style.RESET_ALL     # reset
 bm = colorama.Back.LIGHTRED_EX   # background merah
+
+# Token yang benar
+correct_token = 'bgropay123'
+
+# Mengatur mode terminal untuk menyembunyikan input
+fd = sys.stdin.fileno()
+old_settings = termios.tcgetattr(fd)
+
+while True:
+    # Bersihkan layar terminal
+    os.system('clear')
+    
+    try:
+        tty.setraw(fd)
+        print('[»] Masukkan Token: ', end='', flush=True)
+        input_token = ''
+        while True:
+            char = sys.stdin.read(1)
+            if char == '\n' or char == '\r':
+                break
+            if char == '\x7f':  # Backspace key
+                if len(input_token) > 0:
+                    input_token = input_token[:-1]
+                    sys.stdout.write('\b \b')
+                    sys.stdout.flush()
+            else:
+                input_token += char
+                sys.stdout.write('*')
+                sys.stdout.flush()
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    print()  # Move to the next line
+
+    # Animasi loading
+    print('[*] Verifikasi Token ', end='', flush=True)
+    spinner = ['|', '/', '-', '\\']
+    for _ in range(10):
+        for char in spinner:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.1)
+            sys.stdout.write('\b')
+    
+    print()  # Move to the next line
+
+    # Memeriksa apakah token yang dimasukkan benar
+    if input_token == correct_token:
+        print('[+] Token benar.')
+        time.sleep(3)
+        break  # Keluar dari loop jika login berhasil
+    else:
+        print('[-] Token salah. Silahkan coba lagi.')
+        time.sleep(3)
+
 
 # Mengecek jenis sistem operasi
 so = os.name
