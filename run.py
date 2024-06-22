@@ -9,7 +9,7 @@ import itertools
 import string
 import colorama
 import pyzipper
-import msvcrt
+
 
 # Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
@@ -60,6 +60,7 @@ while True:
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     elif so == "nt":
+        import msvcrt
         print(f"{c}[»] {p}Masukkan Token: ", end="", flush=True)
         input_token = ""
         while True:
@@ -69,7 +70,7 @@ while True:
             elif char == b'\x08':  # Backspace key
                 if len(input_token) > 0:
                     input_token = input_token[:-1]
-                    sys.stdout.write("\b \b")
+                    syimport msvcrts.stdout.write("\b \b")
                     sys.stdout.flush()
             else:
                 input_token += char.decode("utf-8")
