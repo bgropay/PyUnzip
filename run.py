@@ -9,6 +9,7 @@ import itertools
 import string
 import colorama
 import pyzipper
+import msvcrt
 
 # Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
@@ -23,33 +24,57 @@ bm = colorama.Back.LIGHTRED_EX   # background merah
 # Token yang benar
 token_benar = "kunyuk is here"
 
-# Mengatur mode terminal untuk menyembunyikan input
-fd = sys.stdin.fileno()
-old_settings = termios.tcgetattr(fd)
+# Mengecek jenis sistem operasi
+so = os.name
 
 while True:
     # Bersihkan layar terminal
-    os.system("clear")
+    if so == "nt":
+        os.system("cls")
+    elif so == "posix":
+        os.system("clear")
+    else:
+        print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
+        exit(1)
     
-    try:
-        tty.setraw(fd)
+    if so == "posix":
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            print(f"{c}[»] {p}Masukkan Token: ", end="", flush=True)
+            input_token = ""
+            while True:
+                char = sys.stdin.read(1)
+                if char == "\n" or char == "\r":
+                    break
+                if char == "\x7f":  # Backspace key
+                    if len(input_token) > 0:
+                        input_token = input_token[:-1]
+                        sys.stdout.write("\b \b")
+                        sys.stdout.flush()
+                else:
+                    input_token += char
+                    sys.stdout.write("*")
+                    sys.stdout.flush()
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    elif so == "nt":
         print(f"{c}[»] {p}Masukkan Token: ", end="", flush=True)
         input_token = ""
         while True:
-            char = sys.stdin.read(1)
-            if char == "\n" or char == "\r":
+            char = msvcrt.getch()
+            if char in {b'\r', b'\n'}:  # Enter key
                 break
-            if char == "\x7f":  # Backspace key
+            elif char == b'\x08':  # Backspace key
                 if len(input_token) > 0:
                     input_token = input_token[:-1]
                     sys.stdout.write("\b \b")
                     sys.stdout.flush()
             else:
-                input_token += char
+                input_token += char.decode("utf-8")
                 sys.stdout.write("*")
                 sys.stdout.flush()
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
     print()  # Move to the next line
 
@@ -73,9 +98,6 @@ while True:
     else:
         print(f"{m}[-] {p}Token salah. Silahkan coba lagi.{r}")
         time.sleep(3)
-
-# Mengecek jenis sistem operasi
-so = os.name
 
 # Membersihkan layar terminal berdasarkan sistem operasi
 if so == "nt":
