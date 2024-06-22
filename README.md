@@ -5,9 +5,6 @@
 
 # PyUnzip :unlock:
 
-[![Watch the video](https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg)](https://youtu.be/MWqLos73q3s?si=c5x5usY9FYFrdpfS)
-
-
 PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi file Zip dengan menggunakan dua metode serangan utama: Brute Force Attack dan Dictionary Attack. Brute Force Attack memungkinkan pengguna untuk mengatur panjang dan jenis karakter yang digunakan dalam pencarian kata sandi, sedangkan Dictionary Attack menggunakan sebuah file Wordlist untuk mencoba setiap kata sandi yang ada. 
 
  > **Peringatan:** Program ini hanya untuk tujuan Edukasi dan Pembelajaran. Jangan gunakan program ini untuk tujuan ilegal!
