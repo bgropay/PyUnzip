@@ -65,15 +65,16 @@ while True:
         input_token = ""
         while True:
             char = msvcrt.getch()
-            if char in {b'\r', b'\n'}:  # Enter key
+            if char in {b'\r', b'\n'}:
+                print()
                 break
-            elif char == b'\x08':  # Backspace key
+            if char == b'\x08':  # Backspace key
                 if len(input_token) > 0:
                     input_token = input_token[:-1]
-                    syimport msvcrts.stdout.write("\b \b")
+                    sys.stdout.write("\b \b")
                     sys.stdout.flush()
             else:
-                input_token += char.decode("utf-8")
+                input_token += char.decode()
                 sys.stdout.write("*")
                 sys.stdout.flush()
 
