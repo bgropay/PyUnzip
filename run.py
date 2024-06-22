@@ -8,7 +8,6 @@ import string
 import colorama
 import pyzipper
 
-
 # Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
 h = colorama.Fore.LIGHTGREEN_EX  # hijau
@@ -77,8 +76,6 @@ while True:
                 input_token += char.decode()
                 sys.stdout.write("*")
                 sys.stdout.flush()
-
-    print()  # Move to the next line
 
     # Animasi loading
     print(f"{b}[*] {p}Verifikasi Token ", end="", flush=True)
