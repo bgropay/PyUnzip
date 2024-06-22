@@ -271,7 +271,6 @@ if metode_serangan == "2":
             with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
                 for baris_file in fw:
                     kata_sandi = baris_file.strip()
-                    time.sleep(1)
                     try:
                         fz.pwd = kata_sandi.encode("latin-1")
                         if fz.testzip() is None:
