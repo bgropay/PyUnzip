@@ -45,10 +45,10 @@ while True:
     try:
         input_zip = input(f"{c}[»] {p}Masukkan jalur ke file Zip: ")
         if not os.path.isfile(input_zip):
-            print(f"{m}[-] {p}File Zip {input_zip} tidak ditemukan.{r}")
+            print(f"{m}[-] {p}File Zip '{input_zip}' tidak ditemukan.{r}")
             continue
         if not input_zip.endswith(".zip"):
-            print(f"{m}[-] {p}File {input_zip} bukan file Zip.{r}")
+            print(f"{m}[-] {p}File '{input_zip}' bukan file Zip.{r}")
             continue
         break
     # Error handling KeyboardInterrupt
@@ -202,7 +202,7 @@ if metode_serangan == "2":
         try:
             input_wordlist = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist: ")
             if not os.path.isfile(input_wordlist):
-                print(f"{m}[-] {p}File Wordlist {input_wordlist} tidak ditemukan.{r}")
+                print(f"{m}[-] {p}File Wordlist '{input_wordlist}' tidak ditemukan.{r}")
                 continue
             break
         # Error handling KeyboardInterrupt
