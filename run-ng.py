@@ -201,10 +201,7 @@ if metode_serangan == "1":
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
 
 # *************** DICTIONARY ATTACK ***************
-if metode_serangan == "2":    
-    # Mengatur tab completion
-    readline.set_completer(lambda text, state: (glob.glob(text+'*')+[None])[state])
-    readline.parse_and_bind('tab: complete')
+if metode_serangan == "2":
     # input file Wordlist
     while True:
         try:
