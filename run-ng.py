@@ -19,6 +19,13 @@ p = colorama.Fore.LIGHTWHITE_EX  # putih
 r = colorama.Style.RESET_ALL     # reset
 bm = colorama.Back.LIGHTRED_EX   # background merah
 
+# Setup tab completion untuk seluruh folder di Linux
+readline.parse_and_bind("tab: complete")
+readline.set_completer_delims(" \t\n")
+
+# Fungsi lambda untuk melakukan tab completion pada path file zip dan wordlist
+readline.set_completer(lambda text, state: (glob.glob(f"/{text}*") + [None])[state])
+
 so = os.name
 
 if so == "nt":
@@ -40,10 +47,6 @@ print(f"""{p}******************************************************{r}
 {bm}{p}:: Program ini hanya untuk tujuan Edukasi dan Pembelajaran. ::{r}
 {bm}{p}:: Jangan gunakan program ini untuk tujuan ilegal.          ::{r}
 """)
-
-# Mengatur tab completion
-readline.set_completer(lambda text, state: (glob.glob(text+'*')+[None])[state])
-readline.parse_and_bind('tab: complete')
 
 # *************** INPUT FILE ZIP ***************
 while True:
