@@ -42,6 +42,7 @@ pip3 install -r requirements.txt
 apt-get update
 apt-get install python3
 apt-get install python3-pip
+spt-get install python3.11-venv
 apt-get install git
 git clone https://github.com/bgropay/PyUnzip/
 cd PyUnzip
