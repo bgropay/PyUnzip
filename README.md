@@ -9,7 +9,19 @@ PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi
 
  > **Peringatan:** Program ini hanya untuk tujuan Edukasi dan Pembelajaran. Jangan gunakan program ini untuk tujuan ilegal!
 
-## Sistem Operasi yang Didukung PyUnzip 
+## Daftar Isi
+
+- [PyUnzip]()
+- [Sistem Operasi yang didukung]()
+- [Video Demonstrasi]()
+- [Instalasi]()
+- [Penggunaan]()
+- [Masalah dan saran]()
+- [Lisensi]()
+- [Dukung Saya]()
+- [Star History]()
+
+## Sistem Operasi yang didukung PyUnzip 
 
 | Sistem Operasi   | Didukung |
 |:----------------:|:--------:|
@@ -17,7 +29,7 @@ PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi
 | Linux            | ✅       |
 | Windows          | ✅       |
 
-## Demonstrasi
+## Video Demonstrasi
 
 Video demonstrasi dapat ditonton di YouTube melalui [link ini](https://youtu.be/l8UKwPP23Z4?si=ECpNP1yz_qoJOOD3).
 
