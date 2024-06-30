@@ -7,6 +7,7 @@ import itertools
 import string
 import colorama
 import pyzipper
+import getpass
 
 # Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
