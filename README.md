@@ -33,7 +33,7 @@ PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi
 
 ## Video Demonstrasi
 
-Video demonstrasi dapat ditonton di YouTube melalui [link ini](https://youtu.be/l8UKwPP23Z4?si=ECpNP1yz_qoJOOD3).
+Video demonstrasi dapat ditonton di YouTube melalui [link ini](https://youtu.be/hIJVaYrYdzU?si=35A-PAIv52GUsVdj).
 
 ## Instalasi
 
