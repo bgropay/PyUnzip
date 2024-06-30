@@ -26,7 +26,7 @@ if so == "nt":
 elif so == "posix":
     os.system("clear")
 else:
-    print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
+    print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
     exit(1)
 
 # *************** BANNER ***************
