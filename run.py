@@ -39,9 +39,10 @@ while jumlah_percobaan <= 3:
     if input_password != password:
         print("[-] Password salah. Silahkan coba lagi!")
         time.sleep(3)
-        continue
-        jumlah_percobaan += 1
-    break
+        continue     
+    else:
+        break
+    jumlah_percobaan += 1
     
 if so == "nt":
     os.system("cls")
