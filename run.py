@@ -18,10 +18,10 @@ p = colorama.Fore.LIGHTWHITE_EX  # putih
 r = colorama.Style.RESET_ALL     # reset
 bm = colorama.Back.LIGHTRED_EX   # background merah
 
+# Sistem operasi 
 so = os.name
 
-while True:
-    
+while True:    
     if so == "nt":
         os.system("cls")
     elif so == "posix":
@@ -30,8 +30,7 @@ while True:
         print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
         exit(1)
         
-    password = "bgropay777"
-    
+    password = "bgropay777"    
     input_password = getpass.getpass("[»] Masukkan password: ")
     
     if input_password != password:
@@ -39,10 +38,14 @@ while True:
         time.sleep(3)
         continue 
     break
-
-
-
-
+    
+if so == "nt":
+    os.system("cls")
+elif so == "posix":
+    os.system("clear")
+else:
+    print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
+    exit(1)
 
 # *************** BANNER ***************
 print(f"""{p}******************************************************{r}
