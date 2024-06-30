@@ -22,7 +22,9 @@ bm = colorama.Back.LIGHTRED_EX   # background merah
 # Sistem operasi 
 so = os.name
 
-while True:    
+jumlah_percobaan = 0
+
+while jumlah_percobaan <= 3:    
     if so == "nt":
         os.system("cls")
     elif so == "posix":
@@ -37,7 +39,8 @@ while True:
     if input_password != password:
         print("[-] Password salah. Silahkan coba lagi!")
         time.sleep(3)
-        continue 
+        continue
+        jumlah_percobaan += 1
     break
     
 if so == "nt":
