@@ -156,6 +156,13 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    while True:
+            verbose = input(f"{c}[»] {p}Gunakan verbose? [iya/tidak]: ").lower()
+            if verbose in ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+    
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
   
     # Membersihkan layar terminal berdasarkan sistem operasi
@@ -186,8 +193,10 @@ if metode_serangan == "1":
                         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                         exit(1)
                     except Exception:
-                        print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
-                        continue
+                        if verbose == "iya":
+                            print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                            continue
+                        continue 
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
