@@ -243,7 +243,10 @@ if metode_serangan == "2":
                         if verbose == "iya":
                             print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                             continue
-                        continue         
+                        else:
+                            input("")
+                            print(kata_sandi)
+                            continue         
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
