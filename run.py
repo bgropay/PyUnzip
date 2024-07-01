@@ -156,6 +156,7 @@ if metode_serangan == "1":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    # Input mau menggunakan verbose atau tidak 
     while True:
             verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
             if verbose in ["iya", "tidak"]:
@@ -210,7 +211,7 @@ if metode_serangan == "2":
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
-
+    # Input mau menggunakan verbose atau tidak 
     while True:
         verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
         if verbose in ["iya", "tidak"]:
