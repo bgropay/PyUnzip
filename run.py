@@ -211,16 +211,14 @@ if metode_serangan == "2":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    while True:
+        verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
+        if verbose in ["iya", "tidak"]:
+            break
+        else:
+            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+    
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
-  
-    # Membersihkan layar terminal berdasarkan sistem operasi
-    if so == "nt":
-        os.system("cls")
-    elif so == "posix":
-        os.system("clear")
-    else:
-        print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
-        exit(1)
     
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN DICTIONARY ATTACK ***************
     try:
@@ -241,8 +239,10 @@ if metode_serangan == "2":
                         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                         exit(1)
                     except Exception:
-                        print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
-                        continue
+                        if verbose == "iya":
+                            print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                            continue
+                        continue         
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
