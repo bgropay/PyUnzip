@@ -157,22 +157,13 @@ if metode_serangan == "1":
             exit(1)
 
     while True:
-            verbose = input(f"{c}[»] {p}Gunakan verbose? [iya/tidak]: ").lower()
+            verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
             if verbose in ["iya", "tidak"]:
                 break
             else:
                 print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
     
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
-  
-    # Membersihkan layar terminal berdasarkan sistem operasi
-    if so == "nt":
-        os.system("cls")
-    elif so == "posix":
-        os.system("clear")
-    else:
-        print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip :({r}")
-        exit(1)
     
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN BRUTE FORCE ATTACK ***************
     try:
