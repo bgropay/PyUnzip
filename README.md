@@ -13,15 +13,15 @@ PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi
 
 ## Daftar Isi
 
-- [PyUnzip]()
-- [Sistem Operasi yang didukung]()
-- [Video Demonstrasi]()
-- [Instalasi]()
-- [Penggunaan]()
-- [Masalah dan saran]()
-- [Lisensi]()
-- [Dukung Saya]()
-- [Star History]()
+- [PyUnzip](https://github.com/bgropay/PyUnzip/tree/main#pyunzip-unlock)
+- [Sistem Operasi yang didukung](https://github.com/bgropay/PyUnzip#sistem-operasi-yang-didukung-pyunzip)
+- [Video Demonstrasi](https://github.com/bgropay/PyUnzip#video-demonstrasi)
+- [Instalasi](https://github.com/bgropay/PyUnzip#instalasi)
+- [Penggunaan](https://github.com/bgropay/PyUnzip#penggunaan)
+- [Masalah dan saran](https://github.com/bgropay/PyUnzip#masalah-dan-saran)
+- [Lisensi](https://github.com/bgropay/PyUnzip#lisensi)
+- [Dukung Saya](https://github.com/bgropay/PyUnzip#dukung-saya)
+- [Star History](https://github.com/bgropay/PyUnzip#star-history)
 
 ## Sistem Operasi yang didukung PyUnzip 
 
