@@ -34,6 +34,7 @@ password = "bgropay777"
 
 while True:
     try:
+        print(f"\nUntuk password-nya ada di YouTube BgRopay: https://youtube.com\n")
         input_password = getpass.getpass(f"{c}[»] {p}Masukkan password: ")
     
         if input_password != password:
