@@ -7,6 +7,7 @@ import itertools
 import string
 import colorama
 import pyzipper
+import getpass
 
 # Mengubah output warna teks
 m = colorama.Fore.LIGHTRED_EX    # merah
@@ -28,6 +29,34 @@ elif so == "posix":
 else:
     print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
     exit(1)
+
+password = "bgropay777"
+
+while True:
+    input_password = getpass.getpass(f"{c}[»] {p}Masukkan password: ")
+    
+    if input_password != password:
+        print(f"{m}[-] {p}Password salah. Silahkan coba lagi.{r}")
+        time.sleep(3)
+        if so == "nt":
+            os.system("cls")
+        elif so == "posix":
+            os.system("clear")
+        else:
+            print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
+            exit(1)
+        continue
+    else:
+        print(f"{h}[+] {p}Password benar.{r}")
+        time.sleep(3)
+        if so == "nt":
+            os.system("cls")
+        elif so == "posix":
+            os.system("clear")
+        else:
+            print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
+            exit(1)
+        break
 
 # *************** BANNER ***************
 print(f"""{p}******************************************************{r}
