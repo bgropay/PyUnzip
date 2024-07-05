@@ -33,30 +33,34 @@ else:
 password = "bgropay777"
 
 while True:
-    input_password = getpass.getpass(f"{c}[»] {p}Masukkan password: ")
+    try:
+        input_password = getpass.getpass(f"{c}[»] {p}Masukkan password: ")
     
-    if input_password != password:
-        print(f"{m}[-] {p}Password salah. Silahkan coba lagi.{r}")
-        time.sleep(3)
-        if so == "nt":
-            os.system("cls")
-        elif so == "posix":
-            os.system("clear")
+        if input_password != password:
+            print(f"{m}[-] {p}Password salah. Silahkan coba lagi.{r}")
+            time.sleep(3)
+            if so == "nt":
+                os.system("cls")
+            elif so == "posix":
+                os.system("clear")
+            else:
+                print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
+                exit(1)
+            continue
         else:
-            print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
-            exit(1)
-        continue
-    else:
-        print(f"{h}[+] {p}Password benar.{r}")
-        time.sleep(3)
-        if so == "nt":
-            os.system("cls")
-        elif so == "posix":
-            os.system("clear")
-        else:
-            print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
-            exit(1)
-        break
+            print(f"{h}[+] {p}Password benar.{r}")
+            time.sleep(3)
+            if so == "nt":
+                os.system("cls")
+            elif so == "posix":
+                os.system("clear")
+            else:
+                print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
+                exit(1)
+            break
+    except KeyboardInterrupt:
+        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+        exit(1)
 
 # *************** BANNER ***************
 print(f"""{p}******************************************************{r}
