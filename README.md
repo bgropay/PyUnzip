@@ -1,5 +1,4 @@
 ![Dikembangkan di Termux](https://img.shields.io/badge/Dikembangkan%20di-Termux-black.svg)
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Diujicoba pada Kali Linux](https://img.shields.io/badge/Diujicoba%20pada-Kali%20Linux-blue.svg)
 ![Jumlah Fork](https://img.shields.io/github/forks/bgropay/PyUnzip.svg)
 
