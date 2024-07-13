@@ -1,6 +1,7 @@
+![Dibuat menggunakan Python 3](https://img.shields.io/badge/Dibuat%20menggunakan-Python%203-yellow.svg)
 ![Dikembangkan di Termux](https://img.shields.io/badge/Dikembangkan%20di-Termux-black.svg)
 ![Diujicoba pada Kali Linux](https://img.shields.io/badge/Diujicoba%20pada-Kali%20Linux-blue.svg)
-
+![Pemeliharaan tidak](https://img.shields.io/badge/Pemeliharaan%20tidak-ada-red.svg)
 
 
 ![](icon.png)
