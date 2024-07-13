@@ -90,7 +90,15 @@ while True:
         if not input_zip.endswith(".zip"):
             print(f"{m}[-] {p}File '{input_zip}' bukan file Zip.{r}")
             continue
-        break
+        else:
+            try:
+                with pyzipper.AESZipFile(input_zip) as test:
+                    pass
+                    break
+            except pyzipper.BadZipFile:
+                print(f"{m}[-] {p}File Zip '{input_zip}' bukan file Zip yang valid.{r}")
+                continue 
+
     # Error handling KeyboardInterrupt
     except KeyboardInterrupt:
         print(f"\n{m}[-] {p}Keluar...{k}:({r}")
