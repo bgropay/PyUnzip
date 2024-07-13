@@ -1,9 +1,11 @@
 ![Dikembangkan di Termux](https://img.shields.io/badge/Dikembangkan%20di-Termux-black.svg)
 ![Diujicoba pada Kali Linux](https://img.shields.io/badge/Diujicoba%20pada-Kali%20Linux-blue.svg)
 
-# PyUnzip :unlock:
+
 
 ![](icon.png)
+
+<h1 align="center">PyUnzip</h1>
 
 `PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi file Zip dengan menggunakan dua metode serangan utama: Brute Force Attack dan Dictionary Attack.` Brute Force Attack memungkinkan pengguna untuk mengatur panjang dan jenis karakter yang digunakan dalam pencarian kata sandi, sedangkan Dictionary Attack menggunakan sebuah file Wordlist untuk mencoba setiap kata sandi yang ada. 
 
