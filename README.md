@@ -1,11 +1,3 @@
-![Dibuat menggunakan Python 3](https://img.shields.io/badge/Dibuat%20menggunakan-Python%203-yellow.svg)
-![Dikembangkan di Termux](https://img.shields.io/badge/Dikembangkan%20di-Termux-black.svg)
-![Diujicoba pada Kali Linux](https://img.shields.io/badge/Diujicoba%20pada-Kali%20Linux-blue.svg)
-![Pemeliharaan tidak](https://img.shields.io/badge/Pemeliharaan%20tidak-ada-red.svg)
-
-
-![](icon.png)
-
 <h1 align="center">PyUnzip</h1>
 
 `PyUnzip adalah sebuah program Python3 yang dirancang untuk meng-crack kata sandi file Zip dengan menggunakan dua metode serangan utama: Brute Force Attack dan Dictionary Attack.` Brute Force Attack memungkinkan pengguna untuk mengatur panjang dan jenis karakter yang digunakan dalam pencarian kata sandi, sedangkan Dictionary Attack menggunakan sebuah file Wordlist untuk mencoba setiap kata sandi yang ada. 
@@ -20,7 +12,6 @@
 - [Instalasi](https://github.com/bgropay/PyUnzip#instalasi)
 - [Penggunaan](https://github.com/bgropay/PyUnzip#penggunaan)
 - [Masalah dan saran](https://github.com/bgropay/PyUnzip#masalah-dan-saran)
-- [Lisensi](https://github.com/bgropay/PyUnzip#lisensi)
 - [Dukung Saya](https://github.com/bgropay/PyUnzip#dukung-saya)
 - [Star History](https://github.com/bgropay/PyUnzip#star-history)
 
@@ -89,10 +80,6 @@ python3 run.py
 jika Anda mengalami masalah dengan PyUnzip atau memiliki saran perbaikan, kami mengundang Anda untuk melaporkannya di bagian [Issues](https://github.com/bgropay/PyUnzip/issues). Mohon berikan informasi sejelas mungkin tentang masalah atau saran Anda agar kami dapat segera menanganinya.
 
 **Terima kasih atas kontribusi anda!**
-
-## Lisensi
-
-PyUnzip dilisensikan di bawah [Lisensi MIT](https://github.com/bgropay/PyUnzip/blob/main/LICENSE). 
 
 ## Dukung Saya
 
