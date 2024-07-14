@@ -310,7 +310,7 @@ if metode_serangan == "3":
                                 while True:
                                     try:
                                         panjang_kombinasi_karakter = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
-                                        if panjang_kombinasi_karakter <= 0;
+                                        if panjang_kombinasi_karakter <= 0:
                                             print(f"{m}[-] {p}Panjang minimal rules kombinasi karakter harus lebih dari 0.{r}")
                                             continue
                                         break
