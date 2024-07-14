@@ -290,8 +290,8 @@ elif metode_serangan == "2":
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
 
 # *************** COMBINATOR ATTACK ***************
-elif metode_serangan == "3":
-    # input file Wordlist 1
+if metode_serangan == "3":
+    # Input file Wordlist 1
     while True:
         try:
             input_wordlist1 = input(f"{c}[»] {p}Masukkan jalur ke Wordlist 1: ")
@@ -299,12 +299,11 @@ elif metode_serangan == "3":
                 print(f"{m}[-] {p}File Wordlist 1 '{input_wordlist1}' tidak ditemukan.{r}")
                 continue
             break
-        # Error handling KeyboardInterrupt
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
-    # input file Wordlist 2
+    # Input file Wordlist 2
     while True:
         try:
             input_wordlist2 = input(f"{c}[»] {p}Masukkan jalur ke Wordlist 2: ")
@@ -312,21 +311,20 @@ elif metode_serangan == "3":
                 print(f"{m}[-] {p}File Wordlist 2 '{input_wordlist2}' tidak ditemukan.{r}")
                 continue
             break
-        # Error handling KeyboardInterrupt
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
-    # Input mau menggunakan verbose atau tidak 
+    # Input mau menggunakan verbose atau tidak
     while True:
         verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
         if verbose in ["iya", "tidak"]:
             break
         else:
             print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
-    
+
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
-    
+
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN COMBINATOR ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
@@ -334,12 +332,12 @@ elif metode_serangan == "3":
                 with open(input_wordlist2, encoding="latin-1", errors="ignore") as fw2:
                     for word1 in fw1:
                         for word2 in fw2:
-                            kata_sandi = f"{word1.strip()}{word2.strip()}"
+                            kata_sandi = (word1.strip() + word2.strip()).encode("latin-1")
                             try:
-                                fz.pwd = kata_sandi.encode("latin-1")
+                                fz.pwd = kata_sandi
                                 if fz.testzip() is None:
                                     print(f"{p}--------------------------------------------------{r}")
-                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi.decode('latin-1')}{r}")
                                     print(f"{p}--------------------------------------------------{r}")
                                     kata_sandi_ditemukan = True
                                     exit(0)
@@ -349,15 +347,16 @@ elif metode_serangan == "3":
                                 exit(1)
                             except Exception:
                                 if verbose == "iya":
-                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi.decode('latin-1')}{r}")
                                     continue
-                                continue         
+                                continue
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
-            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam kombinasi wordlist yang diberikan.{r}")
+            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam kombinasi Wordlist 1 dan Wordlist 2.{r}")
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
+
 else:
     print(f"{m}[-] {p}Metode serangan '{metode_serangan}' belum diimplementasikan.{r}")
