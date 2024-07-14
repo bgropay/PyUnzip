@@ -404,15 +404,15 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
-                            for word3 in itertools.product(kombinasirules, repeat=panjang_rules):
-                                word3 = "".join(word3)
-                                if rules_wordlist == "iya":
-                                    if rules_kombinasi_karakter == "iya":
+                            if rules_wordlist == "iya":
+                                if rules_kombinasi_karakter == "iya":
+                                    for word3 in itertools.product(kombinasirules, repeat=panjang_rules):
+                                        word3 = "".join(word3)
                                         kata_sandi = (word2 + word1 + word3)
-                                    elif rules_kombinasi_karakter == "tidak":
-                                        kata_sandi = (word2 + word1)
-                                elif rules_wordlist == "tidak":
-                                    kata_sandi = (word1 + word2)
+                                elif rules_kombinasi_karakter == "tidak":
+                                    kata_sandi = (word2 + word1)
+                            elif rules_wordlist == "tidak":
+                                kata_sandi = (word1 + word2)
                                 try:
                                     fz.pwd = kata_sandi.encode("latin-1")
                                     if fz.testzip() is None:
