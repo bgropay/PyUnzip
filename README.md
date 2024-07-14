@@ -6,12 +6,4 @@ PyUnzip adalah program yang dirancang oleh BgRopay untuk melakukan cracking terh
 
 **1. Brute Force Attack**
 
-Teknik serangan ini mencoba semua kombinasi karakter sesuai kriteria yang diberikan hingga menemukan kata sandi yang benar atau semua kemungkinan telah dicoba.
-
-**2. Dictionary Attack**
-
-Teknik serangan ini mencoba setiap kata dalam wordlist sebagai kata sandi untuk file Zip.
-
-**3. Combinator Attack**
-
-Teknik serangan ini menggabungkan setiap kata dari kedua wordlist dan mencoba kombinasi tersebut sebagai kata sandi untuk file Zip.
+Teknik serangan ini mencoba semua kombinasi karakter sesuai kriteria yang diberikan hingga menemukan kata sandi yang benar atau semua kemungkinan telah dicoba. Teknik serangan Bruteforce Attack mencoba semua kombinasi karakter sesuai kriteria yang diberikan hingga menemukan kata sandi yang benar atau semua kemungkinan telah dicoba. Teknik serangan Dictionary Attack mencoba setiap kata dalam wordlist sebagai kata sandi untuk file Zip. Teknik serangan Combinator Attack menggabungkan setiap kata dari kedua wordlist dan mencoba kombinasi tersebut sebagai kata sandi untuk file Zip.
