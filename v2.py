@@ -364,11 +364,11 @@ if metode_serangan == "3":
                 rules = input(f"{c}[»] {p}Masukkan rules ke-{counter}: ")
                 if rules == "1" or rules == daftar_rules[0]:
                     kombinasirules += string.ascii_uppercase
-                elif rules == "2" or rules == daftar_rules[2]:
+                elif rules == "2" or rules == daftar_rules[1]:
                     kombinasirules += string.ascii_lowercase
                 elif rules == "3" or rules == daftar_rules[2]:
                     kombinasirules += string.digits
-                elif rules == "4" or rules == daftar_rules[2]:
+                elif rules == "4" or rules == daftar_rules[3]:
                     kombinasirules += string.punctuation
                 
             except KeyboardInterrupt:
