@@ -306,19 +306,18 @@ if metode_serangan == "3":
                     try:
                         rules_kombinasi_karakter = input(f"{c}[»] {p}Gunakan rules kombinasikan karakter? [iya/tidak]: ").lower()
                         if rules_kombinasi_karakter == "iya":
-                            if rules_kombinasi_karakter == "iya":
-                                while True:
-                                    try:
-                                        panjang_kombinasi_karakter = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
-                                        if panjang_kombinasi_karakter <= 0:
-                                            print(f"{m}[-] {p}Panjang minimal rules kombinasi karakter harus lebih dari 0.{r}")
-                                            continue
-                                        break
-                                    except ValueError:
-                                        print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
-                                    except KeyboardInterrupt:
-                                        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
-                                        exit(1)
+                            while True:
+                                try:
+                                    panjang_kombinasi_karakter = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
+                                    if panjang_kombinasi_karakter <= 0:
+                                        print(f"{m}[-] {p}Panjang minimal rules kombinasi karakter harus lebih dari 0.{r}")
+                                        continue
+                                    break
+                                except ValueError:
+                                    print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
+                                except KeyboardInterrupt:
+                                    print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                    exit(1)
                             break
                         else:
                             print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
