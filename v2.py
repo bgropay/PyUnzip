@@ -230,7 +230,7 @@ if metode_serangan == "1":
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
-            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam rentang panjang dan karakter yang diberikan.{r}")
+            print(f"{m}[-] {p}Kata sandi tidak ditemukan.{r}")
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
@@ -286,7 +286,7 @@ elif metode_serangan == "2":
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
-            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam file wordlist {m}{input_wordlist}{r}")
+            print(f"{m}[-] {p}Kata sandi tidak ditemukan.{r}")
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
@@ -340,10 +340,10 @@ if metode_serangan == "3":
                             word2 = word2.strip()
                             kata_sandi = (word1 + word2).encode("latin-1")
                             try:
-                                fz.pwd = kata_sandi
+                                fz.pwd = kata_sandi.encode("latin-1")
                                 if fz.testzip() is None:
                                     print(f"{p}--------------------------------------------------{r}")
-                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi.decode('latin-1')}{r}")
+                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
                                     print(f"{p}--------------------------------------------------{r}")
                                     kata_sandi_ditemukan = True
                                     exit(0)
@@ -353,17 +353,16 @@ if metode_serangan == "3":
                                 exit(1)
                             except Exception:
                                 if verbose == "iya":
-                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi.decode('latin-1')}{r}")
+                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                                     continue
                                 continue
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
-            print(f"{m}[-] {p}Kata sandi tidak ditemukan dalam kombinasi Wordlist 1 dan Wordlist 2.{r}")
+            print(f"{m}[-] {p}Kata sandi tidak ditemukan.{r}")
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
                                     
-
 else:
     print(f"{m}[-] {p}Metode serangan '{metode_serangan}' belum diimplementasikan.{r}")
