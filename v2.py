@@ -167,11 +167,15 @@ if metode_serangan == "1":
 
     # Input mau menggunakan verbose atau tidak 
     while True:
-        verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
-        if verbose in ["iya", "tidak"]:
-            break
-        else:
-            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        try:
+            verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
+            if verbose in ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
     
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
     print("")
@@ -223,11 +227,15 @@ elif metode_serangan == "2":
             exit(1)
     # Input mau menggunakan verbose atau tidak 
     while True:
-        verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
-        if verbose in ["iya", "tidak"]:
-            break
-        else:
-            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        try:
+            verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
+            if verbose in ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
     
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
     print("")
@@ -291,19 +299,27 @@ if metode_serangan == "3":
 
     # Input mau menggunakan rules atau tidak
     while True:
-        rules = input(f"{c}[»] {p}Gunakan rules ke file Wordlist? [iya/tidak]: ").lower()
-        if rules in ["iya", "tidak"]:
-            break
-        else:
-            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        try:
+            rules_wordlist = input(f"{c}[»] {p}Gunakan rules ke file Wordlist? [iya/tidak]: ").lower()
+            if rules_wordlist in ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
 
     # Input mau menggunakan verbose atau tidak
     while True:
-        verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
-        if verbose in ["iya", "tidak"]:
-            break
-        else:
-            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        try:
+            verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
+            if verbose in ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
 
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
     print("")
@@ -339,9 +355,9 @@ if metode_serangan == "3":
                             #
                             # Kata sandi = RofiSimanjuntak
                             #---------------------------------------------------
-                            if rules == "iya":
+                            if rules_wordlist == "iya":
                                 kata_sandi = (word2 + word1)
-                            elif rules == "tidak":
+                            elif rules_wordlist == "tidak":
                                 kata_sandi = (word1 + word2)
                             try:
                                 fz.pwd = kata_sandi.encode("latin-1")
