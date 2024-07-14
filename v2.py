@@ -334,7 +334,7 @@ if metode_serangan == "3":
                 exit(1)
 
     if rules_kombinasi_karakter == "iya":
-        rules = []
+        kombinasirules = []
         daftar_rules = ["Huruf Besar", "Huruf Kecil", "Angka", "Simbol"]
 
         counter = 1
@@ -342,8 +342,8 @@ if metode_serangan == "3":
         
         while True:
             try:
-                panjang_rule = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
-                if panjang_rule <= 0:
+                panjang_rules = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
+                if panjang_rules <= 0:
                     print(f"{m}[-] {p}Panjang rules kombinasi karakter harus lebih dari 0.{r}")
                     continue
                 break
@@ -357,9 +357,23 @@ if metode_serangan == "3":
         for menu_rules in daftar_rules:
             print(f"{x}. {menu_rules}")
             x += 1
-            
+        prinr("")
+        
         while counter <= panjang_rule:
-            rules = input(f"{c}[»] {p}Masukkan rules ke-{counter}")
+            try:
+                rules = input(f"{c}[»] {p}Masukkan rules ke-{counter}: ")
+                if rules == "1" or rules == daftar_rules[0]:
+                    kombinasirules += string.ascii_uppercase
+                elif rules == "2" or rules == daftar_rules[2]:
+                    kombinasirules += string.ascii_lowercase
+                elif rules == "3" or rules == daftar_rules[2]:
+                    kombinasirules += string.digits
+                elif rules == "4" or rules == daftar_rules[2]:
+                    kombinasirules += string.pinctuation
+                
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
             counter += 1
 
     elif rules_kombinasi_karakter == "tidak":
@@ -390,48 +404,29 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
-                            #---------------------------------------------------
-                            # Jika menggunakan rules ke file Wordlist maka
-                            # kata sandinya menjadi (kata 2 + kata 1)
-                            #
-                            # contohnya:
-                            #
-                            # kata 1 = Rofi
-                            # Kata 2 = Simanjuntak 
-                            #
-                            # Kata sandi = SimanjuntakRofi
-                            #---------------------------------------------------
-                            # Jika tidak menggunakan rules ke file Wordlist maka
-                            # kata sandinya menjadi (kata 1 + kata 2)
-                            #
-                            # contohnya:
-                            #
-                            # kata 1 = Rofi
-                            # Kata 2 = Simanjuntak 
-                            #
-                            # Kata sandi = RofiSimanjuntak
-                            #---------------------------------------------------
-                            if rules_wordlist == "iya":
-                                kata_sandi = (word2 + word1)
-                            elif rules_wordlist == "tidak":
-                                kata_sandi = (word1 + word2)
-                            try:
-                                fz.pwd = kata_sandi.encode("latin-1")
-                                if fz.testzip() is None:
-                                    print(f"{p}--------------------------------------------------{r}")
-                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
-                                    print(f"{p}--------------------------------------------------{r}")
-                                    kata_sandi_ditemukan = True
-                                    exit(0)
-                            # Error handling KeyboardInterrupt
-                            except KeyboardInterrupt:
-                                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
-                                exit(1)
-                            except Exception:
-                                if verbose == "iya":
-                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                            for coba_rules in itertools.product(rules, repeat=panjang_rules)
+                                rules_char = "".join(coba_rules)
+                                if rules_wordlist == "iya":
+                                    kata_sandi = (word2 + word1)
+                                elif rules_wordlist == "tidak":
+                                    kata_sandi = (word1 + word2)
+                                try:
+                                    fz.pwd = kata_sandi.encode("latin-1")
+                                    if fz.testzip() is None:
+                                        print(f"{p}--------------------------------------------------{r}")
+                                        print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                        print(f"{p}--------------------------------------------------{r}")
+                                        kata_sandi_ditemukan = True
+                                        exit(0)
+                                # Error handling KeyboardInterrupt
+                                except KeyboardInterrupt:
+                                    print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                    exit(1)
+                                except Exception:
+                                    if verbose == "iya":
+                                        print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                                        continue
                                     continue
-                                continue
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
