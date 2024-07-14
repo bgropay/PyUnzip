@@ -268,7 +268,7 @@ if metode_serangan == "3":
     # Input file Wordlist 1
     while True:
         try:
-            input_wordlist1 = input(f"{c}[»] {p}Masukkan jalur ke Wordlist 1: ")
+            input_wordlist1 = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist 1: ")
             if not os.path.isfile(input_wordlist1):
                 print(f"{m}[-] {p}File Wordlist 1 '{input_wordlist1}' tidak ditemukan.{r}")
                 continue
@@ -280,7 +280,7 @@ if metode_serangan == "3":
     # Input file Wordlist 2
     while True:
         try:
-            input_wordlist2 = input(f"{c}[»] {p}Masukkan jalur ke Wordlist 2: ")
+            input_wordlist2 = input(f"{c}[»] {p}Masukkan jalur ke file Wordlist 2: ")
             if not os.path.isfile(input_wordlist2):
                 print(f"{m}[-] {p}File Wordlist 2 '{input_wordlist2}' tidak ditemukan.{r}")
                 continue
@@ -291,7 +291,7 @@ if metode_serangan == "3":
 
     # Input mau menggunakan rules atau tidak
     while True:
-        rules = input(f"{c}[»] {p}Gunakan rules? [iya/tidak]: ").lower()
+        rules = input(f"{c}[»] {p}Gunakan rules ke file Wordlist? [iya/tidak]: ").lower()
         if rules in ["iya", "tidak"]:
             break
         else:
@@ -318,7 +318,15 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
-                            # Menggabungkan kata 1 dan 2 sebagai kata sandi
+                            # Jika menggunakan rules ke file Wordlist maka
+                            # kata sandinya menjadi (kata 2 + kata 1)
+                            #
+                            # contohnya:
+                            #
+                            # kata 2 = Rofi
+                            # Kata 1 = Simak
+                            #
+                            # Jadi kata sandi yang akan digunakan: RofiSimanjuntak
                             if rules == "iya":
                                 kata_sandi = (word2 + word1)
                             elif rules == "tidak":
