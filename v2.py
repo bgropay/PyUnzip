@@ -457,7 +457,10 @@ elif metode_serangan == "3":
                                 if rules_kombinasi_karakter == "iya":
                                     for word3 in itertools.product(*kombinasirules):
                                         word3 = "".join(word3)
-                                        kata_sandi = (word1 + word2 + word3)
+                                        if posisi_rules == "depan":
+                                            kata_sandi = (word3 + word1 + word2)
+                                        elif posisi_rules == "belakang":
+                                            kata_sandi = (word1 + word2 + word3)
                                         try:
                                             fz.pwd = kata_sandi.encode("latin-1")
                                             if fz.testzip() is None:
