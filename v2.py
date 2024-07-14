@@ -332,6 +332,12 @@ if metode_serangan == "3":
             except KeyboardInterrupt:
                 print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                 exit(1)
+
+    if rules_kombinasi_karakter == "iya":
+        print("OK")
+
+    elif rules_kombinasi_karakter == "tidak":
+        break
     
     # Input mau menggunakan verbose atau tidak
     while True:
