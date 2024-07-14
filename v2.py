@@ -1,18 +1,12 @@
+#!/usr/bin/env python3
+#
 # PyUnzip 
 #
 # PyUnzip adalah program yang dirancang oleh BgRopay 
 # untuk melakukan peretasan terhadap kata sandi file
 # ZIP. PyUnzip menggunakan tiga teknik serangan yaitu
 # Brute Force Attack, Dictionary Attack, dan Combinator
-# Attack. Teknik Brute Force Attack mencoba semua
-# kombinasi karakter sesuai kriteria yang diberikan
-# hingga menemukan kata sandi yang benar atau semua
-# kemungkinan telah dicoba. Teknik Dictionary Attack 
-# mencoba setiap kata dalam daftar kata sebagai kata
-# sandi untuk file ZIP. Teknik Combinator Attack
-# menggabungkan setiap kata dari kedua daftar kata 
-# tersebut dan mencoba kombinasi tersebut sebagai 
-# kata sandi untuk file ZIP.
+# Attack.
 
 import os
 import time
