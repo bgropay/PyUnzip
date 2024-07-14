@@ -311,25 +311,50 @@ elif metode_serangan == "2":
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
             with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
-                for baris_file in fw:
-                    kata_sandi = baris_file.strip()
-                    try:
-                        fz.pwd = kata_sandi.encode("latin-1")
-                        if fz.testzip() is None:
-                            print(f"{p}--------------------------------------------------{r}")
-                            print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
-                            print(f"{p}--------------------------------------------------{r}")
-                            kata_sandi_ditemukan = True
-                            exit(0)
-                    # Error handling KeyboardInterrupt
-                    except KeyboardInterrupt:
-                        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
-                        exit(1)
-                    except Exception:
-                        if verbose == "iya":
-                            print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
-                            continue
-                        continue         
+                for word1 in fw:
+                    word1 = baris_file.strip()
+                    if rules_kombinasi_karakter_dic == "iya":
+                        for word2 in itertools.product(*kombinasirules_dic):
+                            word3 = "".join(word3)
+                            if posisi_rules_dic == "depan":
+                                kata_sandi = (word2 + word1)
+                            elif posisi_rules_dic == "belakang":
+                                kata_sandi = (word1 + word2)
+                            try:
+                                fz.pwd = kata_sandi.encode("latin-1")
+                                if fz.testzip() is None:
+                                    print(f"{p}--------------------------------------------------{r}")
+                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                    print(f"{p}--------------------------------------------------{r}")
+                                    kata_sandi_ditemukan = True
+                                    exit(0)
+                            # Error handling KeyboardInterrupt
+                            except KeyboardInterrupt:
+                                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                exit(1)
+                            except Exception:
+                                if verbose == "iya":
+                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                                    continue
+                                continue
+                    elif rules_kombinasi_karakter_dic == "tidak":
+                        try:
+                            fz.pwd = kata_sandi.encode("latin-1")
+                            if fz.testzip() is None:
+                                print(f"{p}--------------------------------------------------{r}")
+                                print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                print(f"{p}--------------------------------------------------{r}")
+                                kata_sandi_ditemukan = True
+                                exit(0)
+                        # Error handling KeyboardInterrupt
+                        except KeyboardInterrupt:
+                            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                            exit(1)
+                        except Exception:
+                            if verbose == "iya":
+                                print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                                continue
+                            continue         
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
