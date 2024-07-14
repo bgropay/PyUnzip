@@ -271,7 +271,7 @@ elif metode_serangan == "2":
         print("\nJenis kombinasi karakter yang tersedia:\n")
         for menu_rules_dic in daftar_rules_dic:
             print(f"{x_dic}. {menu_rules_dic}")
-            x_dix += 1
+            x_dic += 1
         print("")
 
         while counter_dic <= panjang_rules_dic:
