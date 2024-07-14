@@ -323,7 +323,11 @@ if metode_serangan == "3":
     if rules_kombinasi_karakter == "iya":
         while True:
             try:
-                panjang_kombinasi_karakter = int(input(f"{c}[»] {p}Masukkan panjang maksimal kombinasi karakter: "))
+                panjang_kombinasi_karakter = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
+                if panjang_kombinasi_karakter <= 0;
+                    print(f"{m}[-] {p}Panjang minimal rules kombinasi karakter harus lebih dari 0.{r}")
+                    continue
+                break
             except ValueError:
                 print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
             except KeyboardInterrupt:
