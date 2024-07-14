@@ -225,6 +225,73 @@ elif metode_serangan == "2":
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
+
+    while True:
+        try:
+            rules_kombinasi_karakter_dic = input(f"{c}[»] {p}Gunakan rules kombinasi karakter? [iya/tidak]: ").lower()
+            if rules_kombinasi_karakter_dic in  ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
+
+    if rules_kombinasi_karakter_dic == "iya":
+        while True:
+            try:
+                posisi_rules_dic = input(f"{c}[»] {p}Posisi rules kombinasi karakter? [depan/belakang]: ").lower()
+                if posisi_rules_dic in  ["depan", "belakang"]:
+                    break
+                else:
+                    print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
+
+        kombinasirules_dic = []
+        daftar_rules_dic = ["Huruf Besar", "Huruf Kecil", "Angka", "Simbol"]
+
+        counter_dic = 1
+        x_dic = 1
+
+        while True:
+            try:
+                panjang_rules_dic = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
+                if panjang_rules_dic <= 0:
+                    print(f"{m}[-] {p}Panjang rules kombinasi karakter harus lebih dari 0.{r}")
+                    continue
+                break
+            except ValueError:
+                print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
+
+        print("\nJenis kombinasi karakter yang tersedia:\n")
+        for menu_rules_dic in daftar_rules_dic:
+            print(f"{x_dic}. {menu_rules_dic}")
+            x_dix += 1
+        print("")
+
+        while counter_dic <= panjang_rules_dic:
+            try:
+                rules_dic = input(f"{c}[»] {p}Masukkan rules ke-{counter_dic}: ")
+                if rules_dic == "1" or rules_dic == daftar_rules_dic[0]:
+                    kombinasirules_dic.append(string.ascii_uppercase)
+                elif rules_dic == "2" or rules_dic == daftar_rules_dic[1]:
+                    kombinasirules_dic.append(string.ascii_lowercase)
+                elif rules_dic == "3" or rules_dic == daftar_rules_dic[2]:
+                    kombinasirules_dic.append(string.digits)
+                elif rules_dic == "4" or rules_dic == daftar_rules_dic[3]:
+                    kombinasirules_dic.append(string.punctuation)
+                counter_dic += 1
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
+    elif rules_kombinasi_karakter_dic == "tidak":
+        pass
+        
     # Input mau menggunakan verbose atau tidak 
     while True:
         try:
