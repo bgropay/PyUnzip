@@ -338,6 +338,7 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
+                            # Menggabungkan kata 1 dan 2 sebagai kata sandi
                             kata_sandi = (word1 + word2)
                             try:
                                 fz.pwd = kata_sandi.encode("latin-1")
