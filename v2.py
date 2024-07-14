@@ -338,7 +338,7 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
-                            kata_sandi = (word1 + word2).encode("latin-1")
+                            kata_sandi = (word1 + word2)
                             try:
                                 fz.pwd = kata_sandi.encode("latin-1")
                                 if fz.testzip() is None:
