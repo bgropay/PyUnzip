@@ -369,7 +369,7 @@ if metode_serangan == "3":
                 elif rules == "3" or rules == daftar_rules[2]:
                     kombinasirules += string.digits
                 elif rules == "4" or rules == daftar_rules[2]:
-                    kombinasirules += string.pinctuation
+                    kombinasirules += string.punctuation
                 
             except KeyboardInterrupt:
                 print(f"\n{m}[-] {p}Keluar...{k}:({r}")
