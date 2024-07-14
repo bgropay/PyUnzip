@@ -38,44 +38,6 @@ else:
     print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
     exit(1)
 
-password = "bgropay777"
-
-while True:
-    try:
-        print(f"""
-{p}+--------------------------------------------------------+{r}
-{p}| Untuk password-nya ada di {m}YouTube {c}bgropay777           {p}|{r}
-{p}| {h}Link{p}: {h}https://youtu.be/R0qedsO_pb0?si=-AjEd705Oq8eB3eY {p}|{r}
-{p}+--------------------------------------------------------+{r}
-""")
-        input_password = getpass.getpass(f"{c}[»] {p}Masukkan password: ")
-    
-        if input_password != password:
-            print(f"{m}[-] {p}Password salah. Silahkan coba lagi.{r}")
-            time.sleep(3)
-            if so == "nt":
-                os.system("cls")
-            elif so == "posix":
-                os.system("clear")
-            else:
-                print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
-                exit(1)
-            continue
-        else:
-            print(f"{h}[+] {p}Password benar.{r}")
-            time.sleep(3)
-            if so == "nt":
-                os.system("cls")
-            elif so == "posix":
-                os.system("clear")
-            else:
-                print(f"{m}[-] {p}Sistem operasi Anda tidak mendukung untuk menjalankan program PyUnzip {k}:({r}")
-                exit(1)
-            break
-    except KeyboardInterrupt:
-        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
-        exit(1)
-
 # *************** BANNER ***************
 print(f"""{p}******************************************************{r}
 {p}* {h}[+] {p}Program   : {k}PyUnzip                            {p}*{r}
