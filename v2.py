@@ -272,7 +272,7 @@ elif metode_serangan == "2":
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
 
 # *************** COMBINATOR ATTACK ***************
-if metode_serangan == "3":
+elif metode_serangan == "3":
     # Input file Wordlist 1
     while True:
         try:
@@ -312,7 +312,7 @@ if metode_serangan == "3":
     if rules_wordlist == "iya":
         while True:
             try:
-                rules_kombinasi_karakter = input(f"{c}[»] {p}Gunakan rules kombinasi katarater? [iya/tidak]: ").lower()
+                rules_kombinasi_karakter = input(f"{c}[»] {p}Gunakan rules kombinasi karakter? [iya/tidak]: ").lower()
                 if rules_kombinasi_karakter in  ["iya", "tidak"]:
                     break
                 else:
@@ -324,7 +324,7 @@ if metode_serangan == "3":
     elif rules_wordlist == "tidak":
         while True:
             try:
-                rules_kombinasi_karakter = input(f"{c}[»] {p}Gunakan rules kombinasi katarater? [iya/tidak]: ").lower()
+                rules_kombinasi_karakter = input(f"{c}[»] {p}Gunakan rules kombinasi karakter? [iya/tidak]: ").lower()
                 if rules_kombinasi_karakter in  ["iya", "tidak"]:
                     break
                 else:
@@ -363,18 +363,17 @@ if metode_serangan == "3":
             try:
                 rules = input(f"{c}[»] {p}Masukkan rules ke-{counter}: ")
                 if rules == "1" or rules == daftar_rules[0]:
-                    kombinasirules += string.ascii_uppercase
+                    kombinasirules.append(string.ascii_uppercase)
                 elif rules == "2" or rules == daftar_rules[1]:
-                    kombinasirules += string.ascii_lowercase
+                    kombinasirules.append(string.ascii_lowercase)
                 elif rules == "3" or rules == daftar_rules[2]:
-                    kombinasirules += string.digits
+                    kombinasirules.append(string.digits)
                 elif rules == "4" or rules == daftar_rules[3]:
-                    kombinasirules += string.punctuation
-                
+                    kombinasirules.append(string.punctuation)
+                counter += 1
             except KeyboardInterrupt:
                 print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                 exit(1)
-            counter += 1
 
     elif rules_kombinasi_karakter == "tidak":
         pass
@@ -394,6 +393,7 @@ if metode_serangan == "3":
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
     print("")
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN COMBINATOR ATTACK ***************
+    kata_sandi_ditemukan = False
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
             with open(input_wordlist1, encoding="latin-1", errors="ignore") as fw1:
@@ -406,11 +406,39 @@ if metode_serangan == "3":
                             word2 = word2.strip()
                             if rules_wordlist == "iya":
                                 if rules_kombinasi_karakter == "iya":
-                                    for word3 in itertools.product(kombinasirules, repeat=panjang_rules):
+                                    for word3 in itertools.product(*kombinasirules):
                                         word3 = "".join(word3)
                                         kata_sandi = (word2 + word1 + word3)
+                                        try:
+                                            fz.pwd = kata_sandi.encode("latin-1")
+                                            if fz.testzip() is None:
+                                                print(f"{p}--------------------------------------------------{r}")
+                                                print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                                print(f"{p}--------------------------------------------------{r}")
+                                                kata_sandi_ditemukan = True
+                                                exit(0)
+                                        except KeyboardInterrupt:
+                                            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                            exit(1)
+                                        except Exception:
+                                            if verbose == "iya":
+                                                print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                                 elif rules_kombinasi_karakter == "tidak":
                                     kata_sandi = (word2 + word1)
+                                    try:
+                                        fz.pwd = kata_sandi.encode("latin-1")
+                                        if fz.testzip() is None:
+                                            print(f"{p}--------------------------------------------------{r}")
+                                            print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                            print(f"{p}--------------------------------------------------{r}")
+                                            kata_sandi_ditemukan = True
+                                            exit(0)
+                                    except KeyboardInterrupt:
+                                        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                        exit(1)
+                                    except Exception:
+                                        if verbose == "iya":
+                                            print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                             elif rules_wordlist == "tidak":
                                 kata_sandi = (word1 + word2)
                                 try:
@@ -421,7 +449,6 @@ if metode_serangan == "3":
                                         print(f"{p}--------------------------------------------------{r}")
                                         kata_sandi_ditemukan = True
                                         exit(0)
-                                # Error handling KeyboardInterrupt
                                 except KeyboardInterrupt:
                                     print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                                     exit(1)
@@ -437,3 +464,4 @@ if metode_serangan == "3":
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
+
