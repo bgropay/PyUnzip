@@ -308,7 +308,28 @@ if metode_serangan == "3":
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
+            
+    while True:
+        try:
+            rules_kombinasi_karakter = input(f"{c}[»] {p}Gunakan rules kombinasikan karakter? [iya/tidak]: ").lower()
+            if rules_kombinasi_karakter in ["iya", "tidak"]:
+                break
+            else:
+                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        except KeyboardInterrupt:
+            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+            exit(1)
 
+    if rules_kombinasi_karakter == "iya":
+        while True:
+            try:
+                panjang_kombinasi_karakter = int(input(f"{c}[»] {p}Masukkan panjang maksimal kombinasi karakter: "))
+            except ValueError:
+                print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
+    
     # Input mau menggunakan verbose atau tidak
     while True:
         try:
