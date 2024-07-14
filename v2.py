@@ -315,7 +315,7 @@ elif metode_serangan == "2":
                     word1 = word1.strip()
                     if rules_kombinasi_karakter_dic == "iya":
                         for word2 in itertools.product(*kombinasirules_dic):
-                            word3 = "".join(word3)
+                            word2 = "".join(word2)
                             if posisi_rules_dic == "depan":
                                 kata_sandi = (word2 + word1)
                             elif posisi_rules_dic == "belakang":
