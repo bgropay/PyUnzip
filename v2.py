@@ -312,7 +312,7 @@ elif metode_serangan == "2":
         with pyzipper.AESZipFile(input_zip) as fz:
             with open(input_wordlist, encoding="latin-1", errors="ignore") as fw:
                 for word1 in fw:
-                    word1 = baris_file.strip()
+                    word1 = word1.strip()
                     if rules_kombinasi_karakter_dic == "iya":
                         for word2 in itertools.product(*kombinasirules_dic):
                             word3 = "".join(word3)
