@@ -334,6 +334,17 @@ elif metode_serangan == "3":
                 exit(1)
 
     if rules_kombinasi_karakter == "iya":
+        while True:
+            try:
+                posisi_rules = input(f"{c}[»] {p}Posisi rules kombinasi karakter? [depan/belakang]: ").lower()
+                if posisi_rules in  ["depan", "belakang"]:
+                    break
+                else:
+                    print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
+                
         kombinasirules = []
         daftar_rules = ["Huruf Besar", "Huruf Kecil", "Angka", "Simbol"]
 
@@ -408,7 +419,10 @@ elif metode_serangan == "3":
                                 if rules_kombinasi_karakter == "iya":
                                     for word3 in itertools.product(*kombinasirules):
                                         word3 = "".join(word3)
-                                        kata_sandi = (word2 + word1 + word3)
+                                        if posisi_rules == "depan":
+                                            kata_sandi = (word3 + word2 + word1)
+                                        elif posisi_rules == "belakang":
+                                            kata_sandi = (word2 + word1 + word3)
                                         try:
                                             fz.pwd = kata_sandi.encode("latin-1")
                                             if fz.testzip() is None:
