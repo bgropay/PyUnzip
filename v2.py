@@ -409,6 +409,8 @@ if metode_serangan == "3":
                                 if rules_wordlist == "iya":
                                     if rules_kombinasi_karakter == "iya":
                                         kata_sandi = (word2 + word1 + word3)
+                                    elif rules_kombinasi_karakter == "tidak":
+                                        kata_sandi = (word2 + word1)
                                 elif rules_wordlist == "tidak":
                                     kata_sandi = (word1 + word2)
                                 try:
