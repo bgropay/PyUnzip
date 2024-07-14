@@ -329,10 +329,14 @@ if metode_serangan == "3":
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
             with open(input_wordlist1, encoding="latin-1", errors="ignore") as fw1:
+                # Ambil baris pertama dari Wordlist 2
                 with open(input_wordlist2, encoding="latin-1", errors="ignore") as fw2:
+                    words2 = fw2.readlines()
                     for word1 in fw1:
-                        for word2 in fw2:
-                            kata_sandi = (word1.strip() + word2.strip()).encode("latin-1")
+                        word1 = word1.strip()
+                        for word2 in words2:
+                            word2 = word2.strip()
+                            kata_sandi = (word1 + word2).encode("latin-1")
                             try:
                                 fz.pwd = kata_sandi
                                 if fz.testzip() is None:
@@ -357,6 +361,7 @@ if metode_serangan == "3":
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
+                                    
 
 else:
     print(f"{m}[-] {p}Metode serangan '{metode_serangan}' belum diimplementasikan.{r}")
