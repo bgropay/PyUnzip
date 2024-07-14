@@ -337,7 +337,7 @@ if metode_serangan == "3":
         print("OK")
 
     elif rules_kombinasi_karakter == "tidak":
-        break
+        pass
     
     # Input mau menggunakan verbose atau tidak
     while True:
