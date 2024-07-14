@@ -405,7 +405,7 @@ if metode_serangan == "3":
                         for word2 in words2:
                             word2 = word2.strip()
                             for word3 in itertools.product(kombinasirules, repeat=panjang_rules):
-                                word3 = "".join(coba_rules)
+                                word3 = "".join(word3)
                                 if rules_wordlist == "iya":
                                     if rules_kombinasi_karakter == "iya":
                                         kata_sandi = (word2 + word1 + word3)
