@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import time
 import sys
@@ -97,17 +95,17 @@ while True:
         exit(1)
 
 # *************** MEMILIH METODE SERANGAN ***************
-list_metode_serangan = ["Brute Force Attack", "Dictionary Attack", "Combinator Attack"]
 x = 1
 print("\nMetode serangan yang tersedia:\n")
-for i, metode in enumerate(list_metode_serangan, start=1):
-    print(f"{i}. {metode}")
+list_metode_serangan = ["Brute Force Attack", "Dictionary Attack", "Combinator Attack"]
+for metode in list_metode_serangan:
+    print(f"{x}. {metode}")
+    x += 1
 print("")
-
 while True:
     try:
         metode_serangan = input(f"{c}[»] {p}Pilih metode serangan: ")
-        if metode_serangan not in map(str, range(1, len(list_metode_serangan) + 1)):
+        if metode_serangan not in ["1", "2", "3"]:
             print(f"{m}[-] {p} Metode serangan '{metode_serangan}' tidak tersedia.{r}")
             continue
         break
@@ -197,11 +195,11 @@ if metode_serangan == "1":
 
     # Input mau menggunakan verbose atau tidak 
     while True:
-            verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
-            if verbose in ["iya", "tidak"]:
-                break
-            else:
-                print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+        verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
+        if verbose in ["iya", "tidak"]:
+            break
+        else:
+            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
     
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
     
@@ -296,11 +294,12 @@ elif metode_serangan == "3":
     # input file Wordlist 1
     while True:
         try:
-            wordlist1_path = input(f"{c}[»] {p}Masukkan jalur ke Wordlist pertama: ")
-            if not os.path.isfile(wordlist1_path):
-                print(f"{m}[-] {p}File Wordlist '{wordlist1_path}' tidak ditemukan.{r}")
+            input_wordlist1 = input(f"{c}[»] {p}Masukkan jalur ke Wordlist 1: ")
+            if not os.path.isfile(input_wordlist1):
+                print(f"{m}[-] {p}File Wordlist 1 '{input_wordlist1}' tidak ditemukan.{r}")
                 continue
             break
+        # Error handling KeyboardInterrupt
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
@@ -308,38 +307,39 @@ elif metode_serangan == "3":
     # input file Wordlist 2
     while True:
         try:
-            wordlist2_path = input(f"{c}[»] {p}Masukkan jalur ke Wordlist kedua: ")
-            if not os.path.isfile(wordlist2_path):
-                print(f"{m}[-] {p}File Wordlist '{wordlist2_path}' tidak ditemukan.{r}")
+            input_wordlist2 = input(f"{c}[»] {p}Masukkan jalur ke Wordlist 2: ")
+            if not os.path.isfile(input_wordlist2):
+                print(f"{m}[-] {p}File Wordlist 2 '{input_wordlist2}' tidak ditemukan.{r}")
                 continue
             break
+        # Error handling KeyboardInterrupt
         except KeyboardInterrupt:
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
-    # Input mau menggunakan verbose atau tidak
+    # Input mau menggunakan verbose atau tidak 
     while True:
         verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
         if verbose in ["iya", "tidak"]:
             break
         else:
             print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
-
+    
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
-
+    
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN COMBINATOR ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
-            with open(wordlist1_path, encoding="latin-1", errors="ignore") as fw1:
-                with open(wordlist2_path, encoding="latin-1", errors="ignore") as fw2:
+            with open(input_wordlist1, encoding="latin-1", errors="ignore") as fw1:
+                with open(input_wordlist2, encoding="latin-1", errors="ignore") as fw2:
                     for word1 in fw1:
                         for word2 in fw2:
-                            kata_sandi = (word1.strip() + word2.strip()).encode("latin-1")
+                            kata_sandi = f"{word1.strip()}{word2.strip()}"
                             try:
-                                fz.pwd = kata_sandi
+                                fz.pwd = kata_sandi.encode("latin-1")
                                 if fz.testzip() is None:
                                     print(f"{p}--------------------------------------------------{r}")
-                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi.decode('latin-1')}{r}")
+                                    print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
                                     print(f"{p}--------------------------------------------------{r}")
                                     kata_sandi_ditemukan = True
                                     exit(0)
@@ -349,9 +349,9 @@ elif metode_serangan == "3":
                                 exit(1)
                             except Exception:
                                 if verbose == "iya":
-                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi.decode('latin-1')}{r}")
-                                continue
-
+                                    print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                                    continue
+                                continue         
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
@@ -360,4 +360,4 @@ elif metode_serangan == "3":
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
 else:
-    print(f"{m}[-] {p}Metode serangan tidak dikenali.{r}")
+    print(f"{m}[-] {p}Metode serangan '{metode_serangan}' belum diimplementasikan.{r}")
