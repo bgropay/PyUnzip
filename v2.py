@@ -363,6 +363,3 @@ if metode_serangan == "3":
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
-                                    
-else:
-    print(f"{m}[-] {p}Metode serangan '{metode_serangan}' belum diimplementasikan.{r}")
