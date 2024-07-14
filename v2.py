@@ -359,7 +359,7 @@ if metode_serangan == "3":
             x += 1
         print("")
         
-        while counter <= panjang_rule:
+        while counter <= panjang_rules:
             try:
                 rules = input(f"{c}[»] {p}Masukkan rules ke-{counter}: ")
                 if rules == "1" or rules == daftar_rules[0]:
