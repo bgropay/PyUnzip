@@ -355,11 +355,11 @@ if metode_serangan == "3":
 
         for menu_rules in daftar_rules:
             print(f"{x}. {menu_rules}")
-            x += x
+            x += 1
             
         while counter <= panjang_rule:
-            rules = input(f"{c}[»] {p}Masukkan rules ke-{c}")
-            counter += counter
+            rules = input(f"{c}[»] {p}Masukkan rules ke-{counter}")
+            counter += 1
 
     elif rules_kombinasi_karakter == "tidak":
         pass
