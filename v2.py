@@ -334,7 +334,32 @@ if metode_serangan == "3":
                 exit(1)
 
     if rules_kombinasi_karakter == "iya":
-        print("OK")
+        rules = []
+        daftar_rules = ["Huruf Besar", "Huruf Kecil", "Angka", "Simbol"]
+
+        counter = 1
+        x = 1
+        
+        while True:
+            try:
+                panjang_rule = int(input(f"{c}[»] {p}Masukkan panjang rules kombinasi karakter: "))
+                if panjang_rule <= 0:
+                    print(f"{m}[-] {p}Panjang rules kombinasi karakter harus lebih dari 0.{r}")
+                    continue
+                break
+            except ValueError:
+                print(f"{m}[-] {p}Masukkan nilai angka yang valid.{r}")
+            except KeyboardInterrupt:
+                print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                exit(1)
+
+        for menu_rules in daftar_rules:
+            print(f"{x}. {menu_rules}")
+            x += x
+            
+        while counter <= panjang_rule:
+            rules = input(f"{c}[»] {p}Masukkan rules ke-{c}")
+            counter += counter
 
     elif rules_kombinasi_karakter == "tidak":
         pass
