@@ -357,7 +357,7 @@ if metode_serangan == "3":
         for menu_rules in daftar_rules:
             print(f"{x}. {menu_rules}")
             x += 1
-        prinr("")
+        print("")
         
         while counter <= panjang_rule:
             try:
