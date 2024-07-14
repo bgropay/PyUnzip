@@ -353,9 +353,7 @@ if metode_serangan == "3":
                 print(f"\n{m}[-] {p}Keluar...{k}:({r}")
                 exit(1)
 
-        echo ""
-        echo "Jenis kombinasi karakter yang tersedia:"
-        echo ""
+        print("\nJenis kombinasi karakter yang tersedia:\n")
         for menu_rules in daftar_rules:
             print(f"{x}. {menu_rules}")
             x += 1
