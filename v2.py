@@ -440,23 +440,41 @@ elif metode_serangan == "3":
                                         if verbose == "iya":
                                             print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
                             elif rules_wordlist == "tidak":
-                                kata_sandi = (word1 + word2)
-                                try:
-                                    fz.pwd = kata_sandi.encode("latin-1")
-                                    if fz.testzip() is None:
-                                        print(f"{p}--------------------------------------------------{r}")
-                                        print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
-                                        print(f"{p}--------------------------------------------------{r}")
-                                        kata_sandi_ditemukan = True
-                                        exit(0)
-                                except KeyboardInterrupt:
-                                    print(f"\n{m}[-] {p}Keluar...{k}:({r}")
-                                    exit(1)
-                                except Exception:
-                                    if verbose == "iya":
-                                        print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
-                                        continue
-                                    continue
+                                if rules_kombinasi_karakter == "iya":
+                                    for word3 in itertools.product(*kombinasirules):
+                                        word3 = "".join(word3)
+                                        kata_sandi = (word1 + word2 + word3)
+                                        try:
+                                            fz.pwd = kata_sandi.encode("latin-1")
+                                            if fz.testzip() is None:
+                                                print(f"{p}--------------------------------------------------{r}")
+                                                print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                                print(f"{p}--------------------------------------------------{r}")
+                                                kata_sandi_ditemukan = True
+                                                exit(0)
+                                        except KeyboardInterrupt:
+                                            print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                            exit(1)
+                                        except Exception:
+                                            if verbose == "iya":
+                                                print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+                                elif rules_kombinasi_karakter == "tidak":
+                                    kata_sandi = (word1 + word2)
+                                    try:
+                                        fz.pwd = kata_sandi.encode("latin-1")
+                                        if fz.testzip() is None:
+                                            print(f"{p}--------------------------------------------------{r}")
+                                            print(f"{h}[+] {p}Kata sandi ditemukan: {h}{kata_sandi}{r}")
+                                            print(f"{p}--------------------------------------------------{r}")
+                                            kata_sandi_ditemukan = True
+                                            exit(0)
+                                    except KeyboardInterrupt:
+                                        print(f"\n{m}[-] {p}Keluar...{k}:({r}")
+                                        exit(1)
+                                    except Exception:
+                                        if verbose == "iya":
+                                            print(f"{m}[-] {p}Kata sandi salah: {m}{kata_sandi}{r}")
+
         # Jika kata sandi tidak ditemukan
         if not kata_sandi_ditemukan:
             print(f"{p}--------------------------------------------------{r}")
@@ -464,4 +482,3 @@ elif metode_serangan == "3":
             print(f"{p}--------------------------------------------------{r}")
     except Exception as e:
         print(f"{m}[-] {p}Kesalahan terjadi: {m}{e}{r}")
-
