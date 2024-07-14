@@ -289,6 +289,14 @@ if metode_serangan == "3":
             print(f"\n{m}[-] {p}Keluar...{k}:({r}")
             exit(1)
 
+    # Input mau menggunakan rules atau tidak
+    while True:
+        rules = input(f"{c}[»] {p}Gunakan rules? [iya/tidak]: ").lower()
+        if rules in ["iya", "tidak"]:
+            break
+        else:
+            print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
+
     # Input mau menggunakan verbose atau tidak
     while True:
         verbose = input(f"{c}[»] {p}Gunakan mode verbose? [iya/tidak]: ").lower()
@@ -311,7 +319,10 @@ if metode_serangan == "3":
                         for word2 in words2:
                             word2 = word2.strip()
                             # Menggabungkan kata 1 dan 2 sebagai kata sandi
-                            kata_sandi = (word1 + word2)
+                            if rules == "iya":
+                                kata_sandi = (word2 + word1)
+                            elif rules == "tidak":
+                                kata_sandi = (word1 + word2)
                             try:
                                 fz.pwd = kata_sandi.encode("latin-1")
                                 if fz.testzip() is None:
