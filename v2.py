@@ -404,7 +404,7 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
-                            for word3 in itertools.product(rules, repeat=panjang_rules)
+                            for word3 in itertools.product(rules, repeat=panjang_rules):
                                 word3 = "".join(coba_rules)
                                 if rules_wordlist == "iya":
                                     if rules_kombinasi_karakter == "iya":
