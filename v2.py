@@ -202,6 +202,7 @@ if metode_serangan == "1":
             print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
     
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+    print("")
     
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN BRUTE FORCE ATTACK ***************
     try:
@@ -257,6 +258,7 @@ elif metode_serangan == "2":
             print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
     
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
+    print("")
     
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN DICTIONARY ATTACK ***************
     try:
@@ -324,7 +326,7 @@ if metode_serangan == "3":
             print(f"{m}[-] {p}Input tidak valid. Harap masukkan 'iya' atau 'tidak'.{r}")
 
     input(f"\n{h}Tekan [Enter] untuk memulai proses Cracking...{r}")
-
+    print("")
     # *************** CRACK KATA SANDI FILE ZIP DENGAN METODE SERANGAN COMBINATOR ATTACK ***************
     try:
         with pyzipper.AESZipFile(input_zip) as fz:
