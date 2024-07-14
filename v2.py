@@ -318,15 +318,27 @@ if metode_serangan == "3":
                         word1 = word1.strip()
                         for word2 in words2:
                             word2 = word2.strip()
+                            #---------------------------------------------------
                             # Jika menggunakan rules ke file Wordlist maka
                             # kata sandinya menjadi (kata 2 + kata 1)
                             #
                             # contohnya:
                             #
-                            # kata 2 = Rofi
-                            # Kata 1 = Simak
+                            # kata 1 = Rofi
+                            # Kata 2 = Simanjuntak 
                             #
-                            # Jadi kata sandi yang akan digunakan: RofiSimanjuntak
+                            # Kata sandi = SimanjuntakRofi
+                            #---------------------------------------------------
+                            # Jika tidak menggunakan rules ke file Wordlist maka
+                            # kata sandinya menjadi (kata 1 + kata 2)
+                            #
+                            # contohnya:
+                            #
+                            # kata 1 = Rofi
+                            # Kata 2 = Simanjuntak 
+                            #
+                            # Kata sandi = RofiSimanjuntak
+                            #---------------------------------------------------
                             if rules == "iya":
                                 kata_sandi = (word2 + word1)
                             elif rules == "tidak":
