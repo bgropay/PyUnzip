@@ -286,7 +286,7 @@ elif metode_serangan == "2":
                 elif rules_dic == "4" or rules_dic == daftar_rules_dic[3]:
                     kombinasirules_dic.append(string.punctuation)
                 else:
-                    print(f"{m}[-] {p} Kombinasi karakter '{rules_dic}' tidak tersedia.{r}")
+                    print(f"{m}[-] {p}Kombinasi karakter '{rules_dic}' tidak tersedia.{r}")
                 counter_dic += 1
             except KeyboardInterrupt:
                 print(f"\n{m}[-] {p}Keluar...{k}:({r}")
