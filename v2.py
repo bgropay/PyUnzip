@@ -340,6 +340,7 @@ elif metode_serangan == "2":
                                     continue
                                 continue
                     elif rules_kombinasi_karakter_dic == "tidak":
+                        kata_sandi = word1
                         try:
                             fz.pwd = kata_sandi.encode("latin-1")
                             if fz.testzip() is None:
