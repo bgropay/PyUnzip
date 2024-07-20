@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 import pyzipper
+from pwn import *
+
+banner = log.info("Selamat datang di PyUnzip")
 
 # *************** INPUT FILE ZIP ***************
 while True:
