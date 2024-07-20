@@ -1,23 +1,6 @@
 #!/usr/bin/env python3
 
-import os
-import time
-import sys
-import itertools
-import string
-import colorama
 import pyzipper
-import getpass
-
-# Mengubah output warna teks
-m = colorama.Fore.LIGHTRED_EX    # merah
-h = colorama.Fore.LIGHTGREEN_EX  # hijau
-b = colorama.Fore.LIGHTBLUE_EX   # biru
-k = colorama.Fore.LIGHTYELLOW_EX # kuning
-c = colorama.Fore.LIGHTCYAN_EX   # cyan
-p = colorama.Fore.LIGHTWHITE_EX  # putih
-r = colorama.Style.RESET_ALL     # reset
-bm = colorama.Back.LIGHTRED_EX   # background merah
 
 # *************** INPUT FILE ZIP ***************
 while True:
